@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Games | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8faf9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      transition: 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container py-5 fade-in">
+
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <h2 class="fw-semibold">🎮 Games Edukatif</h2>
+    <p class="text-muted mt-2">
+      Main sambil belajar ✨  
+      Game ringan untuk membantu Gen Z membangun mindset,
+      kebiasaan baik, dan produktivitas.
+    </p>
+  </div>
+
+  <!-- ================= GAME LIST ================= -->
+  <div class="row g-4">
+
+    <!-- GAME 1 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm rounded-4 h-100 game-card">
+        <div class="card-body p-4">
+          <div class="fs-2 mb-2">🧠</div>
+          <h6 class="fw-semibold">Mindset Quiz</h6>
+          <p class="text-muted small">
+            Tes singkat untuk mengetahui apakah mindset kamu
+            lebih ke fixed atau growth mindset.
+          </p>
+          <button class="btn btn-success btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#quizModal">
+            Mulai →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME 2 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm rounded-4 h-100 game-card">
+        <div class="card-body p-4">
+          <div class="fs-2 mb-2">🔁</div>
+          <h6 class="fw-semibold">Habit Challenge</h6>
+          <p class="text-muted small">
+            Pilih kebiasaan baik dan tantang diri kamu
+            untuk konsisten setiap hari.
+          </p>
+          <button class="btn btn-success btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#habitModal">
+            Mulai →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME 3 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm rounded-4 h-100 game-card">
+        <div class="card-body p-4">
+          <div class="fs-2 mb-2">⚡</div>
+          <h6 class="fw-semibold">Focus Timer</h6>
+          <p class="text-muted small">
+            Game fokus ala Pomodoro untuk membantu
+            kamu tetap produktif tanpa burnout.
+          </p>
+          <button class="btn btn-success btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#focusModal">
+            Mulai →
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= MODAL 1: QUIZ ================= -->
+<div class="modal fade" id="quizModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0">
+      <div class="modal-header"
+           style="background: #e6f4ef;">
+        <h6 class="modal-title fw-semibold">🧠 Mindset Quiz</h6>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">
+          Saat gagal, apa yang paling sering kamu pikirkan?
+        </p>
+        <ul class="text-muted">
+          <li>"Aku memang nggak berbakat"</li>
+          <li>"Aku harus belajar lagi"</li>
+        </ul>
+        <p class="text-muted small">
+          👉 Jika kamu lebih memilih jawaban kedua,
+          berarti kamu sudah memiliki growth mindset 💚
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL 2: HABIT ================= -->
+<div class="modal fade" id="habitModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0">
+      <div class="modal-header"
+           style="background: #e6f4ef;">
+        <h6 class="modal-title fw-semibold">🔁 Habit Challenge</h6>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">
+          Pilih satu kebiasaan baik hari ini:
+        </p>
+        <ul class="text-muted">
+          <li>📖 Membaca 10 menit</li>
+          <li>💧 Minum air yang cukup</li>
+          <li>📵 Kurangi screen time</li>
+        </ul>
+        <p class="text-muted small">
+          Konsistensi kecil lebih penting daripada
+          perubahan besar 💪
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL 3: FOCUS ================= -->
+<div class="modal fade" id="focusModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0">
+      <div class="modal-header"
+           style="background: #e6f4ef;">
+        <h6 class="modal-title fw-semibold">⚡ Focus Timer</h6>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-muted">
+          Fokus selama 25 menit tanpa distraksi.
+        </p>
+        <p class="fs-3 fw-semibold">⏱️ 25:00</p>
+        <p class="text-muted small">
+          Setelah selesai, ambil istirahat 5 menit 🌿
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

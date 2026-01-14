@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Me Time | Lifestyle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background:#f3f8f4;
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* ===== HEADER ===== */
+.page-header{
+  text-align:center;
+  margin-bottom:50px;
+  animation:fadeDown 1s ease;
+}
+
+.page-header h1{
+  font-weight:700;
+}
+
+.page-header p{
+  color:#6c7c72;
+}
+
+/* ===== CARD ===== */
+.metime-card{
+  background:#fff;
+  border-radius:26px;
+  padding:30px;
+  border:1px solid #e3eee8;
+  box-shadow:0 15px 35px rgba(0,0,0,.05);
+  margin-bottom:30px;
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.metime-card:hover{
+  transform:translateY(-6px);
+}
+
+/* ICON BULAT */
+.icon-bubble{
+  width:56px;
+  height:56px;
+  background:#e9f5ef;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  margin-bottom:16px;
+  animation:float 3s ease-in-out infinite;
+}
+
+/* LIST */
+.soft-list li{
+  margin-bottom:10px;
+}
+
+/* BADGE */
+.soft-badge{
+  background:#eaf6ef;
+  color:#1f7f55;
+  border-radius:14px;
+  padding:6px 14px;
+  font-size:13px;
+  display:inline-block;
+  margin-bottom:12px;
+}
+
+/* GRID */
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+/* ANIMASI */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+  <!-- BACK -->
+  <a href="Lifestyle.html" class="btn btn-outline-success btn-sm mb-4">
+    ← Kembali ke Lifestyle
+  </a>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>🌸 Me Time</h1>
+    <p>Waktu untuk diri sendiri tanpa rasa bersalah ✨</p>
+  </div>
+
+  <!-- APA ITU ME TIME -->
+  <div class="metime-card">
+    <div class="icon-bubble">💗</div>
+    <h5>Apa itu Me Time?</h5>
+    <p class="text-muted">
+      Me time adalah waktu khusus yang kamu luangkan untuk diri sendiri
+      tanpa tuntutan, tanpa distraksi, dan tanpa harus produktif.
+      Tujuannya untuk mengisi ulang energi mental, emosional, dan fisik.
+    </p>
+  </div>
+
+  <!-- DURASI -->
+  <div class="metime-card">
+    <div class="icon-bubble">⏰</div>
+    <h5>Berapa Lama Me Time yang Ideal?</h5>
+    <ul class="soft-list">
+      <li>🌱 10–15 menit → cukup untuk reset pikiran</li>
+      <li>☁️ 30 menit → ideal untuk relaksasi</li>
+      <li>🌙 1 jam → deep rest & refleksi</li>
+    </ul>
+    <small class="text-muted">
+      Tidak harus lama, yang penting konsisten 🤍
+    </small>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid-2">
+
+    <!-- GEN Z -->
+    <div class="metime-card">
+      <span class="soft-badge">✨ Gen Z Style</span>
+      <div class="icon-bubble">🧠</div>
+      <h6>Tips Me Time ala Gen Z</h6>
+      <ul class="soft-list">
+        <li>🎧 Dengerin playlist healing</li>
+        <li>📵 Silent mode tanpa notifikasi</li>
+        <li>📝 Journaling aesthetic</li>
+        <li>🕯️ Self talk & afirmasi</li>
+        <li>📖 Baca atau nonton comfort content</li>
+      </ul>
+    </div>
+
+    <!-- GRATIS -->
+    <div class="metime-card">
+      <span class="soft-badge">💸 Gratis</span>
+      <div class="icon-bubble">🌿</div>
+      <h6>Me Time Tanpa Biaya</h6>
+      <ul class="soft-list">
+        <li>🚶 Jalan santai sore</li>
+        <li>🧘 Stretching ringan</li>
+        <li>🌅 Duduk lihat langit</li>
+        <li>📔 Tulis isi hati</li>
+        <li>😴 Power nap</li>
+      </ul>
+    </div>
+
+    <!-- SIBUK -->
+    <div class="metime-card">
+      <span class="soft-badge">⏳ Sibuk</span>
+      <div class="icon-bubble">⚡</div>
+      <h6>Me Time untuk Orang Sibuk</h6>
+      <ul class="soft-list">
+        <li>☕ 5 menit minum tanpa scroll</li>
+        <li>😮‍💨 Tarik napas 4-4-4</li>
+        <li>🎶 1 lagu favorit</li>
+        <li>🛏️ Stretch sebelum tidur</li>
+      </ul>
+    </div>
+
+    <!-- REMINDER -->
+    <div class="metime-card">
+      <span class="soft-badge">🤍 Reminder</span>
+      <div class="icon-bubble">🌼</div>
+      <h6>Ingat Ya…</h6>
+      <p class="text-muted">
+        Me time bukan egois.  
+        Kamu berhak istirahat, tanpa harus merasa bersalah.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

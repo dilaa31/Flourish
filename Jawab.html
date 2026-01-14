@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tanya Jawab | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f6fbf8;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .card-soft {
+      background: #ffffff;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .question-card {
+      background: #eaf7f1;
+      border-radius: 18px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .question-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    }
+
+    .badge-soft {
+      background: #6fcf97;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container py-5 fade-in">
+
+  <!-- HEADER -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <h2 class="fw-semibold">💬 Tanya Jawab</h2>
+      <p class="text-muted mt-3">
+        Punya pertanyaan tentang mindset, kebiasaan,
+        atau produktivitas? Tanyakan di sini dengan aman dan nyaman.
+      </p>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="https://undraw.co/api/illustrations/undraw_questions_re_1fy7.svg"
+           class="img-fluid float" style="max-height: 260px;">
+    </div>
+  </div>
+
+  <!-- FORM TANYA -->
+  <form id="questionForm" class="card-soft p-4 mb-5">
+  <h5 class="fw-semibold mb-3">✍️ Ajukan Pertanyaan</h5>
+
+  <textarea id="questionText" class="form-control mb-3" rows="4"
+    placeholder="Tulis pertanyaanmu di sini..." required></textarea>
+
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-2">
+      <select id="category" class="form-select" required>
+        <option value="">Pilih Kategori</option>
+        <option>Mental Health</option>
+        <option>Mindset</option>
+        <option>Habit</option>
+        <option>Produktivitas</option>
+      </select>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <button type="submit" class="btn btn-success rounded-pill px-4">
+        Kirim Pertanyaan
+      </button>
+    </div>
+  </div>
+</form>
+
+
+  <!-- FILTER -->
+  <div class="mb-4">
+    <span class="badge rounded-pill bg-success me-2">Semua</span>
+    <span class="badge rounded-pill bg-secondary me-2">Mental</span>
+    <span class="badge rounded-pill bg-secondary me-2">Mindset</span>
+    <span class="badge rounded-pill bg-secondary me-2">Habit</span>
+    <span class="badge rounded-pill bg-secondary">Produktivitas</span>
+  </div>
+
+  <!-- LIST PERTANYAAN -->
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <div class="question-card p-4"
+           data-bs-toggle="modal" data-bs-target="#answerModal">
+        <span class="badge badge-soft mb-2">Mindset</span>
+        <h6 class="fw-semibold mt-2">
+          Kenapa aku takut mencoba hal baru?
+        </h6>
+        <p class="text-muted small mb-0">
+          Banyak orang merasa takut gagal karena pola pikir tetap...
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="question-card p-4"
+           data-bs-toggle="modal" data-bs-target="#answerModal">
+        <span class="badge badge-soft mb-2">Produktivitas</span>
+        <h6 class="fw-semibold mt-2">
+          Gimana cara biar produktif tanpa burnout?
+        </h6>
+        <p class="text-muted small mb-0">
+          Produktif bukan berarti bekerja terus-menerus...
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="question-card p-4"
+           data-bs-toggle="modal" data-bs-target="#answerModal">
+        <span class="badge badge-soft mb-2">Habit</span>
+        <h6 class="fw-semibold mt-2">
+          Kenapa susah konsisten bangun kebiasaan?
+        </h6>
+        <p class="text-muted small mb-0">
+          Konsistensi erat kaitannya dengan habit loop...
+        </p>
+      </div>
+    </div>
+<div id="questionList" class="row g-4 mt-2"></div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="mt-5 p-4 rounded-4"
+       style="background:#eaf7f1;">
+    <h6 class="fw-semibold">ℹ️ Disclaimer</h6>
+    <p class="text-muted mb-0 small">
+      Konten tanya jawab di Growly bersifat edukatif dan bukan
+      pengganti konsultasi profesional.
+    </p>
+  </div>
+
+</div>
+
+<!-- MODAL JAWABAN -->
+<div class="modal fade" id="answerModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 border-0">
+      <div class="modal-header">
+        <h5 class="modal-title">💡 Jawaban</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="fw-semibold">
+          Kenapa aku takut mencoba hal baru?
+        </p>
+        <p class="text-muted">
+          Rasa takut mencoba hal baru sering muncul karena mindset tetap,
+          di mana kegagalan dianggap sebagai ancaman.
+          Dengan growth mindset, kegagalan justru dilihat
+          sebagai bagian dari proses belajar dan berkembang.
+        </p>
+        <span class="badge bg-success">Jawaban Edukatif</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const form = document.getElementById("questionForm");
+  const list = document.getElementById("questionList");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const text = document.getElementById("questionText").value;
+    const category = document.getElementById("category").value;
+
+    if (!text || !category) return;
+
+    const card = `
+      <div class="col-md-6">
+        <div class="question-card p-4">
+          <span class="badge badge-soft mb-2">${category}</span>
+          <h6 class="fw-semibold mt-2">${text}</h6>
+          <p class="text-muted small mb-0">
+            Pertanyaan baru dikirim oleh pengguna.
+          </p>
+        </div>
+      </div>
+    `;
+
+    list.insertAdjacentHTML("afterbegin", card);
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

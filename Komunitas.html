@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Safe Space | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      background:linear-gradient(180deg,#F6FBF8,#ECF7F0);
+     font-family: 'Segoe UI', sans-serif;
+      color:#2F4F3E;
+    }
+        .container{
+  margin-left:230px;
+}
+/* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+
+
+    .card-pick {
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+
+    .card-pick:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.08);
+    }
+
+    .hidden {
+      display: none;
+    }
+    .hero{
+      position:relative;
+      text-align:center;
+      padding:80px 0 50px;
+    }
+
+    .blob{
+      position:absolute;
+      top:-80px;
+      left:50%;
+      transform:translateX(-50%);
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle at top,#A8D5BA,#E8F5E9);
+      border-radius:50%;
+      filter:blur(40px);
+      z-index:-1;
+      animation:float 6s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translate(-50%,0)}
+      50%{transform:translate(-50%,15px)}
+      100%{transform:translate(-50%,0)}
+    }
+
+    .nav-pills .nav-link{
+      border-radius:20px;
+      padding:8px 18px;
+      color:#5C8F75;
+      font-weight:500;
+    }
+
+    .nav-pills .nav-link.active{
+      background:#6FBF8E;
+    }
+
+    .card-soft{
+      border:none;
+      border-radius:22px;
+      box-shadow:0 15px 35px rgba(0,0,0,.06);
+      animation:fadeUp .6s ease;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    textarea, select{
+      border-radius:14px!important;
+    }
+
+    .btn-green{
+      background:#6FBF8E;
+      color:#fff;
+      border:none;
+      border-radius:14px;
+      padding:12px;
+      font-weight:600;
+    }
+
+    .btn-green:hover{background:#5CAB80}
+
+    .note-card{
+      background:#E8F5E9;
+      border-radius:18px;
+      padding:1rem;
+      font-size:.95rem;
+      animation:fadeUp .5s ease;
+    }
+
+  .answers{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:16px;
+}
+
+.answer-bubble{
+  max-width:85%;
+  background:#F0FBF5;
+  border-radius:18px;
+  padding:14px 18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  animation:fadeUp .4s ease;
+}
+
+.answers{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:16px;
+}
+
+.answer-bubble{
+  max-width:85%;
+  background:#F0FBF5;
+  border-radius:18px;
+  padding:14px 18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  animation:fadeUp .4s ease;
+}
+
+.answer-meta{
+  font-size:.75rem;
+  color:#7FAF9A;
+  margin-bottom:6px;
+  display:block;
+}
+
+
+  </style>
+</head>
+
+<body>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <a href="Home.html">🏠 Home</a>
+      <a href="About.html">📖 About</a>
+      <a href="Mental.html">🧠 Mental Health</a>
+      <a href="habit.html">🔁 Habit</a>
+      <a href="Mindset12.html" >🌱 Mindset</a>
+      <a href="Produktivitas.html">⚡ Produktivitas</a>
+      <a href="Lifestyle.html">🌿 Lifestyle</a>
+      <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+      <a href="Artikel.html">💡 Insight</a>
+      <a href="Komunitas.html" class="active">👥 Komunitas</a>
+      <a href="Tools.html">🛠 Tools</a>
+      <a href="Contact.html">✉️ Contact</a>
+    </nav>
+
+    <div class="auth-btn text-center">
+      <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+      <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+    </div>
+  </div>
+</aside>
+
+<!-- HERO -->
+<div class="container pb-5">
+
+  <section class="hero">
+    <div class="blob"></div>
+    <h3>💬 Safe Space</h3>
+    <p class="text-muted">
+      Tempat aman buat nulis tanpa nama, tanpa penilaian.
+    </p>
+  </section>
+
+
+  <!-- TABS -->
+  <ul class="nav nav-pills justify-content-center mb-4">
+    <li class="nav-item">
+      <button class="nav-link active" id="tab-curhat" onclick="switchTab('curhat')">
+        💬 Curhat
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" id="tab-qa" onclick="switchTab('qa')">
+        ❓ Tanya & Jawab
+      </button>
+    </li>
+  </ul>
+
+  <!-- CURHAT -->
+  <div id="curhatSection">
+
+    <div class="card card-soft p-4 mb-4 mx-auto" style="max-width:600px">
+      <label class="fw-semibold mb-2">Tulis isi hatimu 💭</label>
+      <textarea id="noteInput" class="form-control mb-3" rows="3"
+        placeholder="Capek boleh. Cerita dikit juga nggak apa-apa..."></textarea>
+
+      <select id="noteType" class="form-select mb-3">
+        <option>💬 Curhatan</option>
+        <option>💌 Note to Self</option>
+        <option>✨ Quote</option>
+      </select>
+
+      <button class="btn btn-green w-100" onclick="saveNote()">
+        Kirim Anonim 🌱
+      </button>
+    </div>
+
+    <div class="row" id="notesContainer"></div>
+  </div>
+
+  <!-- Q&A -->
+  <div id="qaSection" style="display:none">
+
+    <div class="card card-soft p-4 mb-4 mx-auto" style="max-width:600px">
+      <label class="fw-semibold mb-2">Tanya apa aja ❓</label>
+      <textarea id="questionInput" class="form-control mb-3" rows="2"
+        placeholder="Ada yang mau kamu tanyakan?"></textarea>
+      <button class="btn btn-green w-100" onclick="saveQuestion()">
+        Kirim Pertanyaan
+      </button>
+    </div>
+
+    <div id="qaContainer"></div>
+  </div>
+
+</div>
+
+<script>
+  /* ---------- TAB ---------- */
+  function switchTab(tab){
+    document.getElementById("curhatSection").style.display = tab==="curhat"?"block":"none";
+    document.getElementById("qaSection").style.display = tab==="qa"?"block":"none";
+    document.getElementById("tab-curhat").classList.toggle("active",tab==="curhat");
+    document.getElementById("tab-qa").classList.toggle("active",tab==="qa");
+  }
+
+  /* ---------- CURHAT ---------- */
+  function saveNote(){
+    const text=document.getElementById("noteInput").value.trim();
+    const type=document.getElementById("noteType").value;
+    if(!text) return;
+
+    const data=JSON.parse(localStorage.getItem("growly_notes"))||[];
+    data.unshift({text,type,time:new Date().toLocaleDateString()});
+    localStorage.setItem("growly_notes",JSON.stringify(data));
+
+    document.getElementById("noteInput").value="";
+    renderNotes();
+  }
+
+  function renderNotes(){
+    const data=JSON.parse(localStorage.getItem("growly_notes"))||[];
+    const wrap=document.getElementById("notesContainer");
+    wrap.innerHTML="";
+
+    data.forEach(n=>{
+      wrap.innerHTML+=`
+        <div class="col-md-4 mb-4">
+          <div class="note-card">
+            <small class="text-muted">${n.type} • ${n.time}</small>
+            <p class="mt-2 mb-0">${n.text}</p>
+          </div>
+        </div>`;
+    });
+  }
+
+  /* ---------- Q&A ---------- */
+  function saveQuestion(){
+    const text=document.getElementById("questionInput").value.trim();
+    if(!text) return;
+
+    const data=JSON.parse(localStorage.getItem("growly_questions"))||[];
+    data.unshift({text,answers:[],time:new Date().toLocaleDateString()});
+    localStorage.setItem("growly_questions",JSON.stringify(data));
+
+    document.getElementById("questionInput").value="";
+    renderQA();
+  }
+
+  function addAnswer(i){
+    const input=document.getElementById(`answer-${i}`);
+    if(!input.value.trim()) return;
+
+    const data=JSON.parse(localStorage.getItem("growly_questions"));
+    data[i].answers.push(input.value.trim());
+    localStorage.setItem("growly_questions",JSON.stringify(data));
+    renderQA();
+  }
+
+  function renderQA(){
+    const data=JSON.parse(localStorage.getItem("growly_questions"))||[];
+    const wrap=document.getElementById("qaContainer");
+    wrap.innerHTML="";
+
+    data.forEach((q,i)=>{
+      wrap.innerHTML+=`
+        <div class="card card-soft p-4 mb-4 mx-auto" style="max-width:600px">
+          <p class="fw-semibold">❓ ${q.text}</p>
+          <small class="text-muted">${q.time}</small>
+
+          <div class="answers">
+  ${q.answers.map(a=>`
+    <div class="answer-bubble">
+      <span class="answer-meta">Anonim • ${q.time}</span>
+      <p class="mb-0">${a}</p>
+    </div>
+  `).join("")}
+</div>
+
+
+         <div class="mt-4">
+  <textarea id="answer-${i}" class="form-control mb-2" rows="2"
+  placeholder="Jawaban kamu bisa berarti buat seseorang..."></textarea>
+  <button class="btn btn-green w-100 btn-sm" onclick="addAnswer(${i})">
+    Kirim Jawaban 🌱
+  </button>
+</div>
+
+        </div>`;
+    });
+  }
+
+  renderNotes();
+  renderQA();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekomendasi | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8faf9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .container{
+  margin-left:230px;
+}
+/* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+
+
+    .card-pick {
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+
+    .card-pick:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.08);
+    }
+
+    .hidden {
+      display: none;
+    }
+    .profile-img{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  flex-shrink:0;
+}
+.instagram-card{
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.instagram-card > div{
+  display: flex;
+  flex-direction: column;
+}
+
+.instagram-card p{
+  flex-grow: 1;
+}
+
+
+  </style>
+</head>
+
+<body>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <a href="Home.html">🏠 Home</a>
+      <a href="About.html">📖 About</a>
+      <a href="Mental.html">🧠 Mental Health</a>
+      <a href="habit.html">🔁 Habit</a>
+      <a href="Mindset12.html" >🌱 Mindset</a>
+      <a href="Produktivitas.html">⚡ Produktivitas</a>
+      <a href="Lifestyle.html">🌿 Lifestyle</a>
+      <a href="Rekomendasi11.html" class="active">⭐ Rekomendasi</a>
+      <a href="Artikel.html">💡 Insight</a>
+      <a href="Komunitas.html">👥 Komunitas</a>
+      <a href="Tools.html">🛠 Tools</a>
+      <a href="Contact.html">✉️ Contact</a>
+    </nav>
+
+    <div class="auth-btn text-center">
+      <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+      <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+    </div>
+  </div>
+</aside>
+
+<div class="container py-5">
+
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <h2 class="fw-semibold">⭐ Rekomendasi</h2>
+    <p class="text-muted mt-2">
+      Pilihan buku dan konten digital untuk mendukung
+      mental, mindset, kebiasaan, dan produktivitasmu.
+    </p>
+  </div>
+
+  <!-- PILIHAN MENU -->
+  <div class="row g-4 mb-5">
+
+    <div class="col-md-3">
+      <div class="p-4 rounded-4 text-center card-pick"
+           style="background:#E6F6EE"
+           onclick="showSection('buku')">
+        <div class="fs-2 mb-2">📚</div>
+        <h6 class="fw-semibold">Buku</h6>
+        <p class="small text-muted mb-0">Self growth & mindset</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 rounded-4 text-center card-pick"
+           style="background:#EAF3FF"
+           onclick="showSection('youtube')">
+        <div class="fs-2 mb-2">▶️</div>
+        <h6 class="fw-semibold">YouTube</h6>
+        <p class="small text-muted mb-0">Video edukatif</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 rounded-4 text-center card-pick"
+           style="background:#FFF0F5"
+           onclick="showSection('instagram')">
+        <div class="fs-2 mb-2">📸</div>
+        <h6 class="fw-semibold">Instagram</h6>
+        <p class="small text-muted mb-0">Konten harian</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-4 rounded-4 text-center card-pick"
+           style="background:#F3ECFF"
+           onclick="showSection('tiktok')">
+        <div class="fs-2 mb-2">🎵</div>
+        <h6 class="fw-semibold">TikTok</h6>
+        <p class="small text-muted mb-0">Video singkat</p>
+      </div>
+    </div>
+
+  </div>
+
+<!-- ================= BUKU ================= -->
+<div id="buku" class="hidden">
+  <h4 class="fw-semibold mb-3">📚 Rekomendasi Buku</h4>
+  <p class="text-muted mb-4">
+    Buku pilihan untuk membantu membangun kebiasaan,
+    mindset positif, dan kehidupan yang lebih terarah.
+  </p>
+
+  <div class="row g-4">
+
+    <!-- 1 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0735211299-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Atomic Habits</h6>
+        <small class="text-muted">James Clear · 2018</small>
+        <p class="small mt-2">
+          Membentuk kebiasaan kecil yang konsisten untuk perubahan besar.
+        </p>
+        <a href="https://www.amazon.com/dp/0735211299" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0345472322-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Mindset</h6>
+        <small class="text-muted">Carol S. Dweck · 2006</small>
+        <p class="small mt-2">
+          Memahami growth mindset untuk berkembang dalam hidup.
+        </p>
+        <a href="https://www.amazon.com/dp/0345472322" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0143127748-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">The Power of Habit</h6>
+        <small class="text-muted">Charles Duhigg · 2012</small>
+        <p class="small mt-2">
+          Cara kerja kebiasaan dan bagaimana mengubahnya.
+        </p>
+        <a href="https://www.amazon.com/dp/0143127748" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0062316095-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Deep Work</h6>
+        <small class="text-muted">Cal Newport · 2016</small>
+        <p class="small mt-2">
+          Fokus mendalam di era distraksi digital.
+        </p>
+        <a href="https://www.amazon.com/dp/0062316095" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0553418797-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Grit</h6>
+        <small class="text-muted">Angela Duckworth · 2016</small>
+        <p class="small mt-2">
+          Ketekunan lebih penting daripada bakat.
+        </p>
+        <a href="https://www.amazon.com/dp/0553418797" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/1591847818-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Essentialism</h6>
+        <small class="text-muted">Greg McKeown · 2014</small>
+        <p class="small mt-2">
+          Fokus pada hal yang benar-benar penting.
+        </p>
+        <a href="https://www.amazon.com/dp/1591847818" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0735211736-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Make Your Bed</h6>
+        <small class="text-muted">William H. McRaven · 2017</small>
+        <p class="small mt-2">
+          Disiplin kecil yang berdampak besar.
+        </p>
+        <a href="https://www.amazon.com/dp/0735211736" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/1400069289-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">The 7 Habits</h6>
+        <small class="text-muted">Stephen R. Covey · 1989</small>
+        <p class="small mt-2">
+          Prinsip kebiasaan efektif sepanjang masa.
+        </p>
+        <a href="https://www.amazon.com/dp/1400069289" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0525533338-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Can't Hurt Me</h6>
+        <small class="text-muted">David Goggins · 2018</small>
+        <p class="small mt-2">
+          Mental toughness dan ketahanan diri.
+        </p>
+        <a href="https://www.amazon.com/dp/0525533338" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm h-100" style="background:#E6F6EE">
+        <img src="https://covers.openlibrary.org/b/isbn/0241250948-L.jpg" class="img-fluid rounded mb-3">
+        <h6 class="fw-semibold">Ikigai</h6>
+        <small class="text-muted">Héctor García · 2016</small>
+        <p class="small mt-2">
+          Menemukan tujuan hidup dan makna kebahagiaan.
+        </p>
+        <a href="https://www.amazon.com/dp/0241250948" target="_blank" class="text-success small">
+          Beli Buku →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- ================= YOUTUBE ================= -->
+<div id="youtube" class="hidden">
+  <h4 class="fw-semibold mb-3">▶️ Rekomendasi YouTube</h4>
+
+  <div class="row g-4">
+
+    <!-- 1 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+        <img src="Psych2Go.png" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Psych2Go</h6>
+          <p class="small text-muted mb-1">Fokus pada Psikologi dan mental helth dengan penjelasan ringan dan visual menarik</p>
+          <a href="https://www.youtube.com/@Psych2go" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+        <img src="foto/Ali.jpg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Ali Abdaal</h6>
+          <p class="small text-muted mb-1">membahas produktivitas, belajar efektif, dan pengembangan diri dengan gaya yang sederhana dan aplikatif.</p>
+          <a href="https://www.youtube.com/@aliabdaal" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+       <img src="foto/ADHD.png" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">How to ADHD</h6>
+          <p class="small text-muted mb-1">Channel edukatif seputar ADHD dan cara mengelola kecenderungan pikir serta konsentrasi</p>
+          <a href="https://www.youtube.com/@HowtoADHD" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+        <img src="foto/Evan.jpg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Evan Carmichael</h6>
+          <p class="small text-muted mb-1">Inspirasi & motivasi untuk hidup lebih bermakna dan sukses secara personal.</p>
+          <a href="https://www.youtube.com/@EvanCarmichael" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+        <img src="foto/Nathaniel Drew.jpg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Nathaniel Drew</h6>
+          <p class="small text-muted mb-1">erfokus pada self-discovery, mindfulness, dan kehidupan yang lebih sadar.</p>
+          <a href="https://www.youtube.com/@NathanielDrew" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="col-md-4">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#EAF3FF">
+        <img src="foto/Better Ideas.jpg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Better Ideas</h6>
+          <p class="small text-muted mb-1">membahas self-improvement dengan gaya jujur dan realistis, tanpa janji instan atau motivasi palsu.</p>
+          <a href="https://www.youtube.com/@BetterIdeas" target="_blank" class="text-primary small">Kunjungi →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  
+<!-- ================= INSTAGRAM ================= -->
+<div id="instagram" class="hidden">
+  <h4 class="fw-semibold mb-3">📸 Rekomendasi Instagram</h4>
+
+  <div class="row g-4">
+
+    <!-- 1 Fellexandro -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/fellexandro/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/Fellex.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@fellexandro</h6>
+            <p class="small text-muted mb-1">
+              Mindset, self-improvement, dan refleksi hidup dengan pendekatan realistis.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 2 Pijar Psikologi -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/pijarpsikologi/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/pijar.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@pijarpsikologi</h6>
+            <p class="small text-muted mb-1">
+              Edukasi psikologi populer dan kesehatan mental sehari-hari.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+   <!-- 9 Gita Savitri -->
+<div class="col-md-3">
+  <a href="https://www.instagram.com/gitasav/"
+     target="_blank"
+     class="text-decoration-none text-dark">
+    <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+         style="background:#FFF0F5">
+      <img src="foto/Gita.jpg" class="profile-img">
+      <div>
+        <h6 class="fw-semibold mb-1">@gitasav</h6>
+        <p class="small text-muted mb-1">
+          Refleksi hidup, critical thinking, dan self-growth dengan sudut pandang jujur.
+        </p>
+        <span class="text-danger small">Kunjungi →</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+    <div class="col-md-3">
+  <a href=https://www.instagram.com/the.holistic.psychologist/"
+     target="_blank"
+     class="text-decoration-none text-dark">
+    <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+         style="background:#FFF0F5">
+      <img src="foto/the.jpg" class="profile-img">
+      <div>
+        <h6 class="fw-semibold mb-1">the.holistic.psychologist</h6>
+        <p class="small text-muted mb-1">
+          fokus pada self-healing, kesadaran diri, pola pikir, dan hubungan sehat
+        </p>
+        <span class="text-danger small">Kunjungi →</span>
+      </div>
+    </div>
+  </a>
+</div>
+ <!-- ===== BARIS 2 ===== -->
+
+    <!-- 5 Riliv -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/riliv/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/riliv.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@riliv</h6>
+            <p class="small text-muted mb-1">
+              Kesehatan mental, konseling, dan self-care.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 6 Psikologi Corner -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/drjoedispenza/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/drjoe.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@drjoedispenza</h6>
+            <p class="small text-muted mb-1">
+              menjelaskan bagaimana pikiran kita membentuk hidup kita dan bagaimana memprogram ulang kebiasaan atau pola berpikir.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 7 Tanya Psikolog -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/tanyapsikolog/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/Tanya.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@tanyapsikolog</h6>
+            <p class="small text-muted mb-1">
+              Edukasi psikologi praktis untuk kehidupan sehari-hari.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 8 Sejiwa -->
+    <div class="col-md-3">
+      <a href="https://www.instagram.com/mia_yilin_/"
+         target="_blank"
+         class="text-decoration-none text-dark">
+        <div class="p-3 rounded-4 shadow-sm d-flex gap-3 instagram-card"
+             style="background:#FFF0F5">
+          <img src="foto/mia.jpg" class="profile-img">
+          <div>
+            <h6 class="fw-semibold mb-1">@mia_yilin_</h6>
+            <p class="small text-muted mb-1">
+              menggabungkan lifestyle, habit, dan productivity yang sangat relatable terutama untuk Gen Z dan pekerja kreatif.
+            </p>
+            <span class="text-danger small">Kunjungi →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= TIKTOK ================= -->
+<div id="tiktok" class="hidden">
+  <h4 class="fw-semibold mb-3">🎵 Rekomendasi TikTok</h4>
+
+  <div class="row g-4">
+
+    <!-- 1 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/alia.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@aliabdaal</h6>
+          <p class="small text-muted mb-1">
+            Produktivitas, habit, dan sistem hidup yang realistis untuk kerja & belajar.
+          </p>
+          <a href="https://www.tiktok.com/@aliabdaal" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/mel.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@melrobbins</h6>
+          <p class="small text-muted mb-1">
+            Mindset, keberanian, dan kebiasaan kecil untuk perubahan hidup nyata.
+          </p>
+          <a href="https://www.tiktok.com/@melrobbins" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/drjulie.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@drjuliesmith</h6>
+          <p class="small text-muted mb-1">
+            Psikolog klinis yang membahas mental health secara sederhana & ilmiah.
+          </p>
+          <a href="https://www.tiktok.com/@drjulie?_r=1&_t=ZS-92j4Dwy2P00" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/jay.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@jayshetty</h6>
+          <p class="small text-muted mb-1">
+            Mindfulness, purpose hidup, dan hubungan yang lebih sehat.
+          </p>
+          <a href="https://www.tiktok.com/@jayshetty" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BARIS KE 2 ===== -->
+
+    <!-- 5 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/anin.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@ananzaprili</h6>
+          <p class="small text-muted mb-1">
+            berbagi info psikologi dan tips kesehatan mental yang ringan & edukatif (bagus buat mindset positif).
+          </p>
+          <a href="https://www.tiktok.com/@ananzaprili?_r=1&_t=ZS-92j4k2QG4JA" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/vmuliana.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@vmuliana</h6>
+          <p class="small text-muted mb-1">
+            fokus pada tips kerja & habit produktif, termasuk cara bangun rutinitas yang efektif.
+          </p>
+          <a href="https://www.tiktok.com/@vmuliana?_r=1&_t=ZS-92j4osXx5CW" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/sabrina.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">@sabrinamaidaaah</h6>
+          <p class="small text-muted mb-1">
+             fokus edukasi kesehatan mental & self-awareness.
+          </p>
+          <a href="https://www.tiktok.com/@sabrinamaidaaah?_r=1&_t=ZS-92j4u1amnB6" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="col-md-3">
+      <div class="p-3 rounded-4 shadow-sm d-flex gap-3" style="background:#F3ECFF">
+        <img src="foto/fainna.jpeg" class="profile-img">
+        <div>
+          <h6 class="fw-semibold mb-1">Fainna Safitri</h6>
+          <p class="small text-muted mb-1">
+            sering membahas burnout, overthinking, & manajemen stres.
+          </p>
+          <a href="https://www.tiktok.com/@fainna.safitri?_r=1&_t=ZS-92j4x7kgeCT" target="_blank" class="text-secondary small">Buka →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  function showSection(id) {
+    document.querySelectorAll('#buku, #youtube, #instagram, #tiktok')
+      .forEach(el => el.classList.add('hidden'));
+
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

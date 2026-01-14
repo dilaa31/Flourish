@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Habit | Flourish</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#f6faf7;
+  font-family:'Segoe UI', sans-serif;
+}
+
+ /* ===== SIDEBAR ===== */
+    .sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 230px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-right: 1px solid #eef2ef;
+
+  overflow-y: auto;   /* ⬅️ INI KUNCINYA */
+}
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+    /* ===== AUTH BUTTON ===== */
+.auth-btn{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.auth-btn a{
+  text-align:center;
+  font-weight:700;
+  border-radius:14px;
+  padding:10px;
+  text-decoration:none;
+  transition:.2s;
+}
+
+/* Login */
+.btn-login{
+  background:#fbeeee;
+  color:#1f2d27;
+  border:1px solid #e4bcbc;
+}
+
+.btn-login:hover{
+  background:#f5dcdc;
+}
+
+/* Logout */
+.btn-logout{
+  background:#f1f4f3;
+  color:#1f2d27;
+  border:1px solid #cfdad6;
+}
+
+.btn-logout:hover{
+  background:#e6eeeb;
+}
+.sidebar-content{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.menu{
+  flex:1;
+}
+
+.auth-btn{
+  margin-top:20px;
+}
+
+
+/* ===== MAIN ===== */
+.main-content{
+  margin-left:230px;
+  padding:0 40px 40px;
+}
+
+
+.soft-card{
+  background:#e6f6ec;
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.soft-card h4{
+  color:#2f9e44;
+  font-weight:700;
+}
+
+.action-card{
+  background:#fff;
+  border-radius:18px;
+  padding:26px;
+  text-align:center;
+  border:1px solid #dceee3;
+}
+
+.tips-card{
+  border-radius:22px;
+  padding:36px;
+  text-align:center;
+}
+
+.bg-green-soft{ background:#eef9f3; }
+.bg-pink-soft{ background:#fdeeee; }
+
+.click-animate{
+  cursor:pointer;
+  transition:.2s;
+}
+
+.click-animate:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 26px rgba(0,0,0,.08);
+}
+
+.click-animate:active{
+  transform:scale(.96);
+}
+
+.habit-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start; /* 🔥 BUKAN center */
+  padding:40px 10px 20px;
+}
+
+.habit-text{
+  max-width:500px;
+  margin-top:-20px; /* 🔒 teks gak ikut gerak */
+}
+.habit-img{
+  max-height:180px;
+  transform: translateX(-110px) translateY(-0px);
+}
+
+
+.habit-text h3{
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.habit-text p{
+  color:#2d3a34;
+  line-height:1.6;
+}
+
+.habit-illustration img{
+  max-height:200px;   /* bebas mau gede */
+  width:auto;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <nav class="menu">
+    <a href="Home.html">🏠 Home</a>
+    <a href="About.html" >📖 About</a>
+    <a href="Mental.html">🧠 Mental Health</a>
+    <a href="habit.html"class="active">🔁 Habit</a>
+    <a href="Mindset12.html">🌱 Mindset</a>
+    <a href="Produktivitas.html">⚡ Produktivitas</a>
+    <a href="Lifestyle.html">🌿 Lifestyle</a>
+    <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+    <a href="Artikel.html">💡 Insight</a>
+    <a href="Komunitas.html">👥 Komunitas</a>
+    <a href="Tools.html">🛠 Tools</a>
+    <a href="Contact.html">✉️ Contact</a>
+  </nav>
+    </nav>
+
+    <div class="auth-btn text-center">
+  <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+  <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+</div>
+
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+
+  <!-- HEADER -->
+  <div class="habit-header">
+
+  <!-- TEKS -->
+  <div class="habit-text">
+    <h3 class="fw-bold">
+      🔁 Habit
+    </h3>
+    <p>
+      Tindakan kecil yang dilakukan secara berulang dan membentuk
+      pola perilaku dalam kehidupan sehari-hari.
+    </p>
+  </div>
+
+  <!-- GAMBAR -->
+  <div class="habit-illustration">
+    <img src="habit.png" class="habit-img">
+
+  </div>
+
+</div>
+
+
+
+  <!-- WHY -->
+  <div class="soft-card mb-4">
+    <h4>Mengapa membangun kebiasaan baik itu penting?</h4>
+    <p>
+      Kebiasaan baik membantu membentuk versi diri yang lebih sehat,
+      produktif, dan seimbang melalui konsistensi.
+    </p>
+  </div>
+
+  <!-- HABIT LOOP -->
+<div class="soft-card mb-5">
+  <div class="row align-items-center">
+
+    <!-- KIRI : TEKS -->
+    <div class="col-md-8">
+      <h4>Cara Kerja Habit (Habit Loop)</h4>
+      <p>
+        Kebiasaan terbentuk melalui sebuah pola yang disebut <b>Habit Loop</b>.
+        Pola ini menjelaskan bagaimana kebiasaan dimulai, dilakukan,
+        dan dipertahankan secara berulang.
+      </p>
+    </div>
+
+    <!-- KANAN : CARD -->
+    <div class="col-md-4">
+      <div class="action-card click-animate text-center"
+           data-bs-toggle="modal"
+           data-bs-target="#habitLoopModal">
+        🔄<br>
+        <b>Habit Loop</b><br>
+        <span class="text-muted">Klik untuk detail</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+      
+
+  <!-- BOTTOM -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="tips-card bg-green-soft click-animate"
+           data-bs-toggle="modal"
+           data-bs-target="#tipsHabitModal">
+        <h5 class="text-success">Tips Membangun Habit</h5>
+        <span class="text-muted">Klik untuk detail</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="tips-card bg-pink-soft click-animate"
+           data-bs-toggle="modal"
+           data-bs-target="#inspirasiHabitModal">
+        <h5 class="text-success">Inspirasi Habit Positif</h5>
+        <span class="text-muted">Klik untuk detail</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- HABIT LOOP MODAL -->
+<div class="modal fade" id="habitLoopModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5>🔄 Habit Loop</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><b>Trigger</b> — pemicu kebiasaan</li>
+          <li><b>Routine</b> — tindakan</li>
+          <li><b>Reward</b> — rasa puas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS MODAL -->
+<div class="modal fade" id="tipsHabitModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5>🌱 Tips Membangun Habit</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Mulai dari hal kecil</li>
+          <li>Konsisten, bukan sempurna</li>
+          <li>Kaitkan dengan rutinitas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSPIRASI MODAL -->
+<div class="modal fade" id="inspirasiHabitModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5>✨ Inspirasi Habit Positif</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Membaca 10 menit</li>
+          <li>Stretching pagi</li>
+          <li>Jurnal malam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

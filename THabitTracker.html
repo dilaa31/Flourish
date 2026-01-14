@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Habit Tracker | Growly</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  background:linear-gradient(180deg,#F6FBF8,#ECF7F0);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:#2F4F3E;
+}
+
+.soft-card{
+  background:#fff;
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 15px 35px rgba(0,0,0,.06);
+  margin-bottom:24px;
+}
+
+.day{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#E6F2EA;
+  cursor:pointer;
+  margin:auto;
+}
+.day.active{ background:#6FBF8E; }
+
+.back-btn{
+  display:inline-flex;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:16px;
+  background:#E8F5EC;
+  text-decoration:none;
+  color:#3E6F58;
+  font-weight:600;
+}
+
+/* GRAPH */
+.graph-card{
+  background:#EAF6EF;
+  border-radius:20px;
+  padding:20px;
+}
+
+.graph-bar{
+  height:14px;
+  border-radius:20px;
+  background:linear-gradient(90deg,#6FBF8E,#9AD7B3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<a href="Tools.html" class="back-btn mb-4">← Kembali ke Tools</a>
+
+<div class="text-center mb-4">
+  <h3>🌱 Habit Tracker</h3>
+  <p class="text-muted">Bangun kebiasaan kecil, tanpa tekanan.</p>
+  <h6>Minggu ke-<span id="weekLabel"></span></h6>
+</div>
+
+<!-- HISTORY -->
+<div class="soft-card">
+  <label class="fw-semibold mb-2">📅 Lihat History Minggu</label>
+  <select class="form-select" id="historySelect" onchange="loadHistory()"></select>
+</div>
+
+<!-- MAIN -->
+<div class="soft-card">
+
+  <div class="d-flex gap-2 mb-3">
+    <input type="text" id="habitInput" class="form-control"
+           placeholder="Contoh: Bangun jam 6 pagi">
+    <button class="btn btn-success" onclick="addHabit()">Tambah</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table text-center align-middle">
+      <thead>
+        <tr>
+          <th>Habit</th>
+          <th>Min</th><th>Sen</th><th>Sel</th>
+          <th>Rab</th><th>Kam</th><th>Jum</th><th>Sab</th>
+        </tr>
+      </thead>
+      <tbody id="habitTable"></tbody>
+    </table>
+  </div>
+
+  <small class="text-muted">Progress Minggu Ini</small>
+  <div class="progress mt-1">
+    <div id="weekProgress" class="progress-bar bg-success"></div>
+  </div>
+
+</div>
+
+<!-- GRAPH -->
+<div class="soft-card">
+  <h6 class="mb-3">📊 Perkembangan Mingguan</h6>
+  <div id="weekGraph"></div>
+</div>
+
+</div>
+
+<script>
+const DAYS = 7;
+let currentWeek = Number(localStorage.getItem("week")) || 1;
+document.getElementById("weekLabel").innerText = currentWeek;
+
+let habits = JSON.parse(localStorage.getItem("habits_"+currentWeek)) || [];
+let stats = JSON.parse(localStorage.getItem("stats")) || {};
+
+/* RENDER */
+function render(readonly=false){
+  const table = document.getElementById("habitTable");
+  table.innerHTML = "";
+
+  habits.forEach((h,hi)=>{
+    let row = `<tr><td class="text-start fw-semibold">${h.name}</td>`;
+    h.days.forEach((d,di)=>{
+      row += `
+        <td>
+          <div class="day ${d?'active':''}"
+          ${!readonly ? `onclick="toggle(${hi},${di})"` : ""}></div>
+        </td>`;
+    });
+    row += "</tr>";
+    table.innerHTML += row;
+  });
+
+  updateProgress();
+}
+
+/* ADD */
+function addHabit(){
+  const input = document.getElementById("habitInput");
+  if(!input.value.trim()) return;
+
+  habits.push({ name: input.value, days:Array(DAYS).fill(false) });
+  input.value="";
+  save();
+}
+
+/* TOGGLE */
+function toggle(h,d){
+  habits[h].days[d]=!habits[h].days[d];
+  save();
+}
+
+/* SAVE */
+function save(){
+  localStorage.setItem("habits_"+currentWeek,JSON.stringify(habits));
+  render();
+}
+
+/* PROGRESS */
+function updateProgress(){
+  let total=0, done=0;
+  habits.forEach(h=>h.days.forEach(d=>{ total++; if(d) done++; }));
+  let percent = total?Math.round(done/total*100):0;
+  document.getElementById("weekProgress").style.width=percent+"%";
+
+  if(percent===100){
+    stats["Week "+currentWeek]=percent;
+    localStorage.setItem("stats",JSON.stringify(stats));
+    currentWeek++;
+    localStorage.setItem("week",currentWeek);
+    habits=[];
+    save();
+    drawGraph();
+    loadHistoryOptions();
+    document.getElementById("weekLabel").innerText=currentWeek;
+  }
+}
+
+/* HISTORY */
+function loadHistoryOptions(){
+  const select=document.getElementById("historySelect");
+  select.innerHTML="<option value='current'>Minggu Sekarang</option>";
+  Object.keys(stats).forEach(w=>{
+    select.innerHTML+=`<option value="${w}">${w}</option>`;
+  });
+}
+
+function loadHistory(){
+  const val=document.getElementById("historySelect").value;
+  if(val==="current"){
+    habits=JSON.parse(localStorage.getItem("habits_"+currentWeek))||[];
+    render(false);
+  }else{
+    const num=val.split(" ")[1];
+    habits=JSON.parse(localStorage.getItem("habits_"+num))||[];
+    render(true);
+  }
+}
+
+/* GRAPH */
+function drawGraph(){
+  const graph=document.getElementById("weekGraph");
+  graph.innerHTML="";
+  Object.keys(stats).forEach(w=>{
+    graph.innerHTML+=`
+      <div class="mb-3">
+        <small>${w} — ${stats[w]}%</small>
+        <div class="graph-card mt-1">
+          <div class="graph-bar" style="width:${stats[w]}%"></div>
+        </div>
+      </div>`;
+  });
+}
+
+loadHistoryOptions();
+drawGraph();
+render();
+</script>
+
+</body>
+</html>

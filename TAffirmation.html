@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Affirmation | Growly</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  background:linear-gradient(180deg,#FFF6F8,#EEF7F1);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:#3F5F4F;
+}
+
+.container{
+  max-width:720px;
+}
+
+/* CARD */
+.soft-card{
+  background:#ffffff;
+  border-radius:26px;
+  padding:32px;
+  box-shadow:0 18px 40px rgba(0,0,0,.06);
+}
+
+/* AFFIRMATION */
+.affirmation-box{
+  background:linear-gradient(135deg,#FFE8EF,#EAF5EE);
+  border-radius:24px;
+  padding:36px;
+  font-size:1.05rem;
+  font-weight:600;
+  text-align:center;
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(6px);
+}
+
+/* BUTTONS */
+.btn-main{
+  background:#F1A7B8;
+  color:white;
+  border:none;
+  border-radius:18px;
+  padding:12px;
+  font-weight:600;
+}
+
+.btn-main:hover{
+  background:#E890A6;
+}
+
+.btn-outline-soft{
+  border:2px solid #8EBFA5;
+  color:#4E7C65;
+  border-radius:18px;
+  padding:10px;
+  font-weight:600;
+}
+
+.btn-outline-soft:hover{
+  background:#E6F3EC;
+}
+
+/* BACK */
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#EAF5EE;
+  padding:10px 18px;
+  border-radius:16px;
+  color:#4E7C65;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.back-btn:hover{
+  transform:translateY(-2px);
+  background:#DDEFE6;
+}
+
+/* FAVORITE LIST */
+.favorite-item{
+  background:#F7FBF9;
+  border-radius:16px;
+  padding:12px 16px;
+  font-size:.9rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+  <!-- BACK -->
+  <a href="Tools.html" class="back-btn mb-4">
+    ← Kembali ke Tools
+  </a>
+
+  <!-- HEADER -->
+  <div class="text-center mb-4">
+    <h3>🌸 Daily Affirmation</h3>
+    <p class="text-muted">
+      Kalimat lembut untuk menemani harimu.
+    </p>
+  </div>
+
+  <!-- AFFIRMATION -->
+  <div class="soft-card text-center mb-4">
+    <div class="affirmation-box mb-4" id="affirmationText">
+      Memuat affirmation hari ini...
+    </div>
+
+    <div class="d-grid gap-2">
+      <button class="btn btn-main" onclick="generateAffirmation()">
+        Affirmation Baru ✨
+      </button>
+
+      <button class="btn btn-outline-soft" onclick="saveFavorite()">
+        Simpan ke Favorit 💚
+      </button>
+    </div>
+  </div>
+
+  <!-- FAVORITES -->
+  <div class="soft-card">
+    <h6 class="mb-3">💞 Favorit Kamu</h6>
+    <div id="favoriteList" class="d-grid gap-2">
+      <small class="text-muted">Belum ada favorit.</small>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const affirmations = [
+  "Aku cukup, apa adanya.",
+  "Aku berkembang dengan caraku sendiri.",
+  "Aku berhak merasa tenang hari ini.",
+  "Aku lembut pada diriku sendiri.",
+  "Aku tidak harus sempurna.",
+  "Aku aman untuk menjadi diriku sendiri.",
+  "Aku menghargai prosesku.",
+  "Aku layak mendapatkan hal baik."
+];
+
+const textEl = document.getElementById("affirmationText");
+
+/* DAILY AFFIRMATION */
+function loadDailyAffirmation(){
+  const today = new Date().toDateString();
+  const savedDay = localStorage.getItem("affirmationDay");
+
+  if(savedDay !== today){
+    const random = affirmations[Math.floor(Math.random()*affirmations.length)];
+    localStorage.setItem("dailyAffirmation", random);
+    localStorage.setItem("affirmationDay", today);
+  }
+
+  textEl.innerText = localStorage.getItem("dailyAffirmation");
+}
+
+/* GENERATE WITH FADE */
+function generateAffirmation(){
+  textEl.classList.add("fade");
+
+  setTimeout(()=>{
+    const random =
+      affirmations[Math.floor(Math.random()*affirmations.length)];
+    textEl.innerText = random;
+    textEl.classList.remove("fade");
+  },300);
+}
+
+/* FAVORITES */
+function saveFavorite(){
+  const text = textEl.innerText;
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if(!favorites.includes(text)){
+    favorites.push(text);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    renderFavorites();
+  }
+}
+
+function renderFavorites(){
+  const list = document.getElementById("favoriteList");
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if(favorites.length === 0){
+    list.innerHTML = `<small class="text-muted">Belum ada favorit.</small>`;
+    return;
+  }
+
+  list.innerHTML = "";
+  favorites.forEach((f,i)=>{
+    list.innerHTML += `
+      <div class="favorite-item">
+        <span>${f}</span>
+        <button class="btn btn-sm btn-outline-danger"
+          onclick="removeFavorite(${i})">✕</button>
+      </div>`;
+  });
+}
+
+function removeFavorite(index){
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  favorites.splice(index,1);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  renderFavorites();
+}
+
+loadDailyAffirmation();
+renderFavorites();
+</script>
+
+</body>
+</html>

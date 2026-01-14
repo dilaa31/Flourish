@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Skin & Body Care | Flourish</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background:#f3f8f4;
+  font-family:'Segoe UI', sans-serif;
+}
+.container{
+  margin-left:230px;
+  max-width:1200px;
+  margin-right:auto;
+}
+
+
+/* ===== HEADER ===== */
+.page-title{
+  font-weight:800;
+}
+.page-subtitle{
+  color:#5f6f68;
+}
+
+/* ===== CARE CARD ===== */
+.care-card{
+  background:#ffffff;
+  border-radius:26px;
+  padding:28px;
+  border:1px solid #e3eee8;
+  height:100%;
+  transition:.35s;
+  position:relative;
+}
+
+.care-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+
+/* ===== ICON HEADER ===== */
+.care-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.care-icon{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+}
+
+.face .care-icon{background:#e8f2ff;}
+.body .care-icon{background:#eaf7ea;}
+.hair .care-icon{background:#fff1dc;}
+
+/* ===== ISSUE BOX ===== */
+.issue-box{
+  background:#f7fbf8;
+  border-radius:18px;
+  padding:16px 18px;
+  margin-bottom:14px;
+  transition:.25s;
+}
+
+.issue-box:hover{
+  background:#eaf6f0;
+}
+
+.issue-box h6{
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+/* TAG */
+.issue-tag{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:10px;
+  margin-left:6px;
+  font-weight:600;
+}
+
+.acne{background:#fdeaea;color:#a94442;}
+.dry{background:#e8f2ff;color:#2f5c8a;}
+.oily{background:#eaf7ea;color:#2f6b52;}
+.repair{background:#f1ecfb;color:#6b4fa3;}
+.bright{background:#fff1dc;color:#9a6b00;}
+
+/* LIST */
+.issue-box ul{
+  padding-left:18px;
+  margin-bottom:0;
+}
+.issue-box li{
+  font-size:14px;
+  color:#4f5f57;
+}
+
+/* DECOR LINE */
+.care-card::before{
+  content:"";
+  width:44px;
+  height:4px;
+  border-radius:4px;
+  background:#7fc7a2;
+  display:block;
+  margin-bottom:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+  <!-- BACK -->
+  <a href="Lifestyle.html" class="btn btn-outline-success btn-sm mb-4">
+    ← Kembali ke Lifestyle
+  </a>
+
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <h2 class="page-title">🧴 Skincare Guide</h2>
+    <p class="page-subtitle">
+      Panduan perawatan wajah, badan, dan rambut sesuai masalah kulitmu
+    </p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- FACE CARE -->
+    <div class="col-md-4">
+      <div class="care-card face">
+
+        <div class="care-header">
+          <div class="care-icon">💆‍♀️</div>
+          <h4>Face Care</h4>
+        </div>
+
+        <div class="issue-box">
+          <h6>Jerawat <span class="issue-tag acne">acne</span></h6>
+          <ul>
+            <li>Salicylic Acid – membersihkan pori</li>
+            <li>Tea Tree – antibakteri</li>
+            <li>Centella – menenangkan</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Bekas Jerawat <span class="issue-tag bright">brightening</span></h6>
+          <ul>
+            <li>Niacinamide – meratakan warna</li>
+            <li>Alpha Arbutin – memudarkan noda</li>
+            <li>Vitamin C – mencerahkan</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Kulit Kering <span class="issue-tag dry">hydration</span></h6>
+          <ul>
+            <li>Hyaluronic Acid</li>
+            <li>Ceramide</li>
+            <li>Squalane</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Skin Barrier <span class="issue-tag repair">repair</span></h6>
+          <ul>
+            <li>Ceramide</li>
+            <li>Panthenol</li>
+            <li>Minimal exfoliasi</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BODY CARE -->
+    <div class="col-md-4">
+      <div class="care-card body">
+
+        <div class="care-header">
+          <div class="care-icon">🧴</div>
+          <h4>Body Care</h4>
+        </div>
+
+        <div class="issue-box">
+          <h6>Kulit Badan Kering <span class="issue-tag dry">dry</span></h6>
+          <ul>
+            <li>Shea Butter</li>
+            <li>Glycerin</li>
+            <li>Aloe Vera</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Jerawat Punggung <span class="issue-tag acne">acne</span></h6>
+          <ul>
+            <li>Salicylic Acid Body Wash</li>
+            <li>Tea Tree</li>
+            <li>Shower setelah berkeringat</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Mencerahkan Badan <span class="issue-tag bright">bright</span></h6>
+          <ul>
+            <li>Niacinamide</li>
+            <li>Vitamin C</li>
+            <li>Rutin body lotion</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HAIR CARE -->
+    <div class="col-md-4">
+      <div class="care-card hair">
+
+        <div class="care-header">
+          <div class="care-icon">💇‍♀️</div>
+          <h4>Hair Care</h4>
+        </div>
+
+        <div class="issue-box">
+          <h6>Kulit Kepala Gatal <span class="issue-tag oily">scalp</span></h6>
+          <ul>
+            <li>Tea Tree</li>
+            <li>Menthol</li>
+            <li>Hindari keramas berlebihan</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Rambut Rontok <span class="issue-tag repair">strength</span></h6>
+          <ul>
+            <li>Biotin</li>
+            <li>Caffeine</li>
+            <li>Pijat kulit kepala</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Memanjangkan Rambut <span class="issue-tag bright">growth</span></h6>
+          <ul>
+            <li>Rosemary Extract</li>
+            <li>Hair tonic rutin</li>
+          </ul>
+        </div>
+
+        <div class="issue-box">
+          <h6>Rambut Kering <span class="issue-tag dry">dry</span></h6>
+          <ul>
+            <li>Argan Oil</li>
+            <li>Hair mask mingguan</li>
+            <li>Kurangi heat styling</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

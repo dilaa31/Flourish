@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tools | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(180deg, #F6FBF8, #ECF7F0);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #2F4F3E;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+
+    /* ===== MAIN CONTENT (INI YANG DIRAPIIN) ===== */
+    .main-content{
+      margin-left:230px;
+      padding: 0 40px;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      position: relative;
+    }
+
+    .blob {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at top, #A8D5BA, #E8F5E9);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: -1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 15px); }
+      100% { transform: translate(-50%, 0); }
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 1.8rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeUp 0.8s ease;
+      height: 100%;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tool-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .btn-soft {
+      background-color: #6FBF8E;
+      color: white;
+      border-radius: 14px;
+      border: none;
+      padding: 10px;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    .btn-soft:hover {
+      background-color: #5CAB80;
+    }
+
+    .tag {
+      background: #E8F5E9;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <a href="Home.html">🏠 Home</a>
+      <a href="About.html">📖 About</a>
+      <a href="Mental.html">🧠 Mental Health</a>
+      <a href="habit.html">🔁 Habit</a>
+      <a href="Mindset12.html">🌱 Mindset</a>
+      <a href="Produktivitas.html">⚡ Produktivitas</a>
+      <a href="Lifestyle.html">🌿 Lifestyle</a>
+      <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+      <a href="Artikel.html">💡 Insight</a>
+      <a href="Komunitas.html">👥 Komunitas</a>
+      <a href="Tools.html" class="active">🛠 Tools</a>
+      <a href="Contact.html">✉️ Contact</a>
+    </nav>
+
+    <div class="auth-btn text-center">
+      <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+      <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob"></div>
+    <h3>🛠 Tools for Your Growth</h3>
+    <p class="text-muted">Alat kecil buat bantu hidup lebih teratur & mindful.</p>
+  </section>
+
+  <!-- TOOLS -->
+  <div class="container pb-5">
+    <div class="row g-4 justify-content-center">
+
+      <!-- Habit -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon">🌱</div>
+          <span class="tag">Habit</span>
+          <h5>Habit Tracker</h5>
+          <p class="text-muted small">
+            Bangun kebiasaan kecil tanpa tekanan.
+          </p>
+          <a href="THabitTracker.html" class="btn btn-soft w-100">Mulai</a>
+        </div>
+      </div>
+
+      <!-- Affirmation -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon">💌</div>
+          <span class="tag">Self Love</span>
+          <h5>Affirmation</h5>
+          <p class="text-muted small">
+            Kalimat baik buat diri sendiri hari ini.
+          </p>
+         <a href="TAffirmation.html" class="btn btn-soft w-100">
+  Generate
+</a>
+
+        </div>
+      </div>
+
+      <!-- Mood -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon">🧠</div>
+          <span class="tag">Check-in</span>
+          <h5>Mood Check</h5>
+          <p class="text-muted small">
+            Sadari kondisi mentalmu tanpa menghakimi.
+          </p>
+           <a href="TMoodCheck.html" class="btn btn-soft w-100">
+  Check Mood
+</a>
+        </div>
+      </div>
+
+      <!-- Planner -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon">📋</div>
+          <span class="tag">Planning</span>
+          <h5>Daily Planner</h5>
+          <p class="text-muted small">
+            Rencana ringan, bukan to-do yang bikin stres.
+          </p>
+                   <a href="TPlan.html" class="btn btn-soft w-100">
+  Buat Rencana
+</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

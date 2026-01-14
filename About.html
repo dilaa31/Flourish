@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>About | Flourish</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+ body {
+      background-color: #f8faf9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+    .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border: 1.5px solid #2ecc71;
+  border-radius: 8px;
+
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #2ecc71;
+  color: white;
+}
+
+    /* ===== MAIN ===== */
+    .main{
+      margin-left:260px;
+      padding:40px 50px;
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      background:#e3f4e6;
+      border-radius:30px;
+      padding:40px;
+    }
+
+    .hero h1{
+      font-weight:800;
+      font-size:30px;
+      margin-bottom:14px;
+    }
+
+    .hero p{
+      font-size:15px;
+      line-height:1.7;
+      color:#2f4b3f;
+    }
+
+    /* ===== IMAGE ANIMATION ===== */
+    .grow-float{
+      animation: growFloat 5s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    @keyframes growFloat{
+      0%{
+        transform: scale(0.9) translateY(10px);
+        opacity:0;
+      }
+      40%{
+        transform: scale(1.02) translateY(-6px);
+        opacity:1;
+      }
+      100%{
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* ===== SECTION ===== */
+    .section-title{
+      color:#2ea44f;
+      font-weight:800;
+      margin-top:40px;
+      margin-bottom:14px;
+    }
+
+    .highlight-box{
+      background:#dff3e6;
+      border-radius:20px;
+      padding:20px 24px;
+    }
+
+    .value-card{
+      background:#ffffff;
+      border-radius:20px;
+      padding:20px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      height:100%;
+    }
+
+    .value-card h6{
+      font-weight:800;
+      margin-top:10px;
+    }
+
+    .disclaimer{
+      background:#e9f8ee;
+      border-radius:20px;
+      padding:20px;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <nav class="menu">
+    <a href="Home.html">🏠 Home</a>
+    <a href="About.html" class="active">📖 About</a>
+    <a href="Mental.html">🧠 Mental Health</a>
+    <a href="habit.html">🔁 Habit</a>
+    <a href="Mindset12.html">🌱 Mindset</a>
+    <a href="Produktivitas.html">⚡ Produktivitas</a>
+    <a href="Lifestyle.html">🌿 Lifestyle</a>
+    <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+    <a href="Artikel.html">💡 Insight</a>
+    <a href="Komunitas.html">👥 Komunitas</a>
+    <a href="Tools.html">🛠 Tools</a>
+    <a href="Contact.html">✉️ Contact</a>
+  </nav>
+    </nav>
+
+    <div class="auth-btn text-center">
+  <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+  <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+</div>
+
+  </div>
+</aside>
+
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1>🌱 About Flourish</h1>
+        <p>
+          Flourish adalah website edukatif yang dirancang untuk membantu kamu
+          memahami diri sendiri, membangun kebiasaan baik, dan menjalani hidup
+          yang lebih seimbang.
+        </p>
+        <p>
+          Flourish hadir sebagai ruang aman untuk belajar, refleksi, dan
+          berkembang secara perlahan tanpa tekanan.
+        </p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="About.jpeg" class="img-fluid grow-float" style="max-width:360px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- TUJUAN -->
+  <h3 class="section-title">Tujuan Flourish</h3>
+  <div class="highlight-box">
+    Flourish bertujuan meningkatkan kesadaran dan literasi kesehatan mental,
+    pengembangan diri, serta gaya hidup sehat melalui konten yang ringan,
+    relevan, dan mudah dipahami.
+  </div>
+
+  <!-- NILAI -->
+  <h3 class="section-title">Nilai Utama Flourish</h3>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="value-card">
+        🌿
+        <h6>Mindful</h6>
+        <p class="text-muted small">Mengajak pengguna lebih sadar terhadap diri sendiri</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="value-card">
+        📘
+        <h6>Edukatif</h6>
+        <p class="text-muted small">Berbasis informasi yang bermanfaat</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="value-card">
+        💚
+        <h6>Supportive</h6>
+        <p class="text-muted small">Memberikan dukungan tanpa menghakimi</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="value-card">
+        ⚡
+        <h6>Relevant</h6>
+        <p class="text-muted small">Dekat dengan kehidupan Gen Z</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer mt-4">
+    ⚠️ <b>Disclaimer</b><br>
+    Seluruh konten di Flourish bersifat edukatif dan tidak dimaksudkan sebagai
+    pengganti konsultasi profesional di bidang kesehatan mental atau medis.
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

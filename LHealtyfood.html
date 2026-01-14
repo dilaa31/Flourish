@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Lifestyle | Healthy Food</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  background:linear-gradient(180deg,#F6FBF8,#ECF7F0);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:#2F4F3E;
+}
+
+.container{max-width:1000px}
+
+/* CARD */
+.soft-card{
+  background:#fff;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+  margin-bottom:22px;
+}
+
+/* HEADER */
+.page-title{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.page-title h3{
+  font-weight:700;
+}
+
+/* MENU GRID */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.menu-item{
+  background:#F1FAF5;
+  border-radius:20px;
+  padding:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.menu-item:hover{
+  transform:translateY(-4px);
+  background:#E5F4EC;
+}
+
+.menu-icon{
+  font-size:1.6rem;
+  margin-bottom:10px;
+}
+
+.menu-item h6{
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+/* INPUT */
+input,textarea{
+  border-radius:14px!important;
+}
+
+/* CHECK ITEM */
+.check-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.check-item input{
+  accent-color:#6FBF8E;
+}
+
+/* DOT LIST */
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#CFE7DB;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#6FBF8E;
+}
+
+/* FOOD MOOD */
+.mood{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:14px;
+  background:#E8F5E9;
+  cursor:pointer;
+  margin:4px;
+}
+
+.mood.active{
+  background:#6FBF8E;
+  color:#fff;
+}
+
+.menu-card{
+  background:#F9FFFC;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,.06);
+  display:flex;
+  flex-direction:column;
+}
+
+.menu-card img{
+  height:180px;
+  width:100%;
+  object-fit:cover;
+}
+
+.menu-body{
+  padding:16px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.menu-body h6{
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.menu-body small{
+  color:#6c8f7d;
+}
+
+.menu-body p{
+  font-size:.85rem;
+  color:#4f6f60;
+  margin-top:8px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<!-- BACK -->
+<a href="Lifestyle.html" class="btn btn-sm btn-outline-success mb-4">
+← Kembali ke Tools
+</a>
+
+<div class="page-title">
+  <h3>🥗 Healthy Food</h3>
+  <p class="text-muted">Merawat tubuh dengan cara yang lembut.</p>
+</div>
+
+<!-- MENU -->
+<div class="soft-card">
+  <div class="menu-grid">
+    <div class="menu-item" onclick="showSection('daily')">
+      <div class="menu-icon">⏰</div>
+      <h6>Daily Food Reminder</h6>
+      <small class="text-muted">Ingat makan teratur</small>
+    </div>
+
+    <div class="menu-item" onclick="showSection('menu')">
+      <div class="menu-icon">🍽️</div>
+      <h6>Inspirasi Menu</h6>
+      <small class="text-muted">Ide makan sederhana</small>
+    </div>
+
+    <div class="menu-item" onclick="showSection('water')">
+      <div class="menu-icon">💧</div>
+      <h6>Water Tracker</h6>
+      <small class="text-muted">Pantau minum harian</small>
+    </div>
+
+    <div class="menu-item" onclick="showSection('mindful')">
+      <div class="menu-icon">🌿</div>
+      <h6>Mindful Eating Tips</h6>
+      <small class="text-muted">Makan lebih sadar</small>
+    </div>
+
+    <div class="menu-item" onclick="showSection('shopping')">
+      <div class="menu-icon">🧺</div>
+      <h6>Mindful Shopping</h6>
+      <small class="text-muted">Belanja dengan niat</small>
+    </div>
+
+    <div class="menu-item" onclick="showSection('mood')">
+      <div class="menu-icon">💬</div>
+      <h6>Food Mood Note</h6>
+      <small class="text-muted">Catat rasa & perasaan</small>
+    </div>
+  </div>
+</div>
+
+<!-- DAILY FOOD -->
+<div id="daily" class="soft-card d-none">
+  <div class="section-title">⏰ Daily Food Reminder</div>
+  <div class="check-item"><input type="checkbox"> Sarapan</div>
+  <div class="check-item"><input type="checkbox"> Makan Siang</div>
+  <div class="check-item"><input type="checkbox"> Makan Malam</div>
+</div>
+
+<!-- INSPIRASI MENU SEHAT -->
+<div id="menu" class="soft-card">
+
+  <h5 class="fw-semibold mb-4">🍽️ Inspirasi Menu Sehat</h5>
+
+  <!-- REKOMENDASI MOOD -->
+  <div class="mb-4 p-3 rounded-4" style="background:#F1FAF5">
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <span>🧠</span>
+      <strong>Rekomendasi Berdasarkan Mood</strong>
+    </div>
+
+    <select class="form-select rounded-3" onchange="filterByMood(this.value)">
+      <option value="">Pilih mood kamu hari ini</option>
+      <option value="lelah">😴 Lelah</option>
+      <option value="happy">😊 Happy</option>
+      <option value="stress">😣 Stres</option>
+      <option value="focus">🎯 Fokus</option>
+    </select>
+
+    <p id="moodResult" class="small text-muted mt-2"></p>
+  </div>
+
+  <!-- MENU CARD -->
+  <div class="row g-4" id="menuList">
+
+    <!-- CARD -->
+    <div class="col-md-4">
+      <div class="menu-card h-100">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd">
+        <div class="menu-body">
+          <h6>Nasi + Ayam + Sayur</h6>
+          <small>🍗 Protein tinggi • 🍚 Karbo seimbang</small>
+          <span class="badge bg-success mt-2">🎯 Naik Berat Badan</span>
+          <p>
+            Cocok untuk menambah energi dan massa tubuh
+            secara sehat dan stabil.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="menu-card h-100">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061">
+        <div class="menu-body">
+          <h6>Salad Ayam & Telur</h6>
+          <small>🥚 Protein • 🥬 Serat tinggi • Rendah kalori</small>
+          <span class="badge bg-warning mt-2">🎯 Diet Sehat</span>
+          <p>
+            Membantu kenyang lebih lama tanpa
+            kalori berlebih.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="menu-card h-100">
+        <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759">
+        <div class="menu-body">
+          <h6>Oat + Buah + Yogurt</h6>
+          <small>🥛 Protein ringan • 🍓 Vitamin • 🍯 Energi alami</small>
+          <span class="badge bg-info mt-2">🎯 Seimbang</span>
+          <p>
+            Pas untuk sarapan atau makan malam
+            yang ringan.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MENU HARIAN -->
+  <div class="mt-5 p-4 rounded-4" style="background:#EAF6F0">
+    <h6 class="fw-semibold mb-2">📅 Menu Hari Ini</h6>
+    <p class="small text-muted mb-1">
+      Rekomendasi ringan untuk hari ini:
+    </p>
+    <strong id="dailyMenu">🍽️ Oat + Buah + Yogurt</strong>
+  </div>
+
+</div>
+
+
+<!-- Water Tracker -->
+<div id="water" class="soft-card">
+
+  <h5 class="mb-1">💧 Water Tracker</h5>
+  <p class="text-muted small mb-3">
+    Pelan-pelan, dengarkan kebutuhan tubuhmu.
+  </p>
+
+  <!-- Progress -->
+  <div class="text-center mb-3">
+    <div class="progress rounded-pill" style="height:14px;">
+      <div id="waterProgress"
+           class="progress-bar"
+           style="width:0%; background:#6FBF8E;">
+      </div>
+    </div>
+    <small class="text-muted">
+      <span id="waterCurrent">0</span> / 2000 ml
+    </small>
+  </div>
+
+  <!-- Quick Add -->
+  <div class="d-flex gap-2 mb-3">
+    <button class="btn btn-sm btn-outline-success w-100"
+            onclick="addWater(250)">+250 ml</button>
+    <button class="btn btn-sm btn-outline-success w-100"
+            onclick="addWater(500)">+500 ml</button>
+  </div>
+
+  <!-- Mood -->
+  <div class="mb-2">
+    <small class="text-muted">Setelah minum air:</small>
+    <div class="d-flex gap-2 mt-1">
+      <button class="btn btn-light btn-sm" onclick="setWaterMood('😌 Segar')">😌</button>
+      <button class="btn btn-light btn-sm" onclick="setWaterMood('🙂 Oke')">🙂</button>
+      <button class="btn btn-light btn-sm" onclick="setWaterMood('😴 Masih lelah')">😴</button>
+    </div>
+    <small id="waterMood" class="text-muted d-block mt-1"></small>
+  </div>
+
+</div>
+
+<!-- MINDFUL -->
+<div id="mindful" class="soft-card d-none">
+  <div class="section-title">🌿 Mindful Eating Tips</div>
+  <ul class="small text-muted">
+    <li>Makan tanpa terburu-buru</li>
+    <li>Dengar sinyal kenyang</li>
+    <li>Tidak harus selalu habis</li>
+  </ul>
+</div>
+
+<!-- Mindful Shopping -->
+<div class="soft-card">
+
+  <h5>🧺 Mindful Shopping</h5>
+
+  <input type="text" id="itemInput"
+         class="form-control mb-2"
+         placeholder="Contoh: salad">
+
+  <input type="text" id="noteInput"
+         class="form-control mb-3"
+         placeholder="Catatan niat belanja">
+
+  <button class="btn btn-success mb-3"
+          onclick="addItem()">Tambah</button>
+
+  <ul id="shoppingList" class="list-group mb-2"></ul>
+
+  <small class="text-muted">
+    Belanja dengan niat, bukan impuls 🌱
+  </small>
+
+</div>
+
+<!-- FOOD MOOD -->
+<div id="mood" class="soft-card d-none">
+  <div class="section-title">💬 Food Mood Note</div>
+  <div>
+    <span class="mood">😌 Nyaman</span>
+    <span class="mood">🙂 Cukup</span>
+    <span class="mood">😕 Berat</span>
+    <span class="mood">😣 Kurang enak</span>
+  </div>
+  <textarea class="form-control mt-3" rows="3"
+    placeholder="Setelah makan, aku merasa..."></textarea>
+</div>
+
+</div>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('.soft-card').forEach(c=>{
+    if(c.id) c.classList.add('d-none');
+  });
+  document.getElementById(id).classList.remove('d-none');
+}
+
+// water toggle
+document.querySelectorAll('.dot').forEach(d=>{
+  d.onclick=()=>d.classList.toggle('active');
+});
+
+// mood toggle
+document.querySelectorAll('.mood').forEach(m=>{
+  m.onclick=()=>{
+    document.querySelectorAll('.mood').forEach(x=>x.classList.remove('active'));
+    m.classList.add('active');
+  }
+});
+
+function filterByMood(mood){
+  const result = document.getElementById("moodResult");
+
+  const map = {
+    lelah: "Coba menu hangat & seimbang seperti nasi + ayam + sayur 🍲",
+    happy: "Mood bagus! Menu seimbang atau ringan cocok buatmu ✨",
+    stress: "Pilih makanan bernutrisi tinggi & hangat 🧠",
+    focus: "Protein & karbo seimbang bantu fokus lebih lama 🎯"
+  };
+
+  result.innerText = map[mood] || "";
+}
+
+const WATER_TARGET = 2000;
+const todayKey = "water-" + new Date().toLocaleDateString("id-ID");
+
+let waterData = JSON.parse(localStorage.getItem(todayKey)) || {
+  amount: 0,
+  mood: ""
+};
+
+function addWater(ml){
+  waterData.amount += ml;
+  saveWater();
+}
+
+function setWaterMood(mood){
+  waterData.mood = mood;
+  saveWater();
+}
+
+function saveWater(){
+  localStorage.setItem(todayKey, JSON.stringify(waterData));
+  renderWater();
+}
+
+function renderWater(){
+  const percent = Math.min((waterData.amount / WATER_TARGET) * 100, 100);
+
+  document.getElementById("waterCurrent").innerText = waterData.amount;
+  document.getElementById("waterProgress").style.width = percent + "%";
+  document.getElementById("waterMood").innerText =
+    waterData.mood ? "Mood: " + waterData.mood : "";
+}
+
+renderWater();
+
+
+let shoppingItems =
+  JSON.parse(localStorage.getItem("shoppingItems")) || [];
+
+function addItem(){
+  const item = document.getElementById("itemInput").value.trim();
+  const note = document.getElementById("noteInput").value.trim();
+
+  if(!item) return;
+
+  shoppingItems.push({
+    name: item,
+    note: note
+  });
+
+  document.getElementById("itemInput").value = "";
+  document.getElementById("noteInput").value = "";
+
+  saveShopping();
+}
+
+function saveShopping(){
+  localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
+  renderShopping();
+}
+
+function renderShopping(){
+  const list = document.getElementById("shoppingList");
+  list.innerHTML = "";
+
+  shoppingItems.forEach((i, index) => {
+    list.innerHTML += `
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div>
+          <strong>${i.name}</strong>
+          ${i.note ? `<div class="text-muted small">${i.note}</div>` : ""}
+        </div>
+        <button class="btn btn-sm btn-outline-danger"
+                onclick="removeItem(${index})">✕</button>
+      </li>
+    `;
+  });
+}
+
+function removeItem(index){
+  shoppingItems.splice(index, 1);
+  saveShopping();
+}
+
+renderShopping();
+
+
+
+
+</script>
+
+</body>
+</html>

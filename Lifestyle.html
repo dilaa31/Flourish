@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Lifestyle | Flourish</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background:#f3f8f4;
+  font-family:'Segoe UI', sans-serif;
+}
+.container{
+  margin-left:230px;
+}
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+
+/* ===== HEADER ===== */
+.page-title{
+  font-weight:700;
+}
+.page-subtitle{
+  color:#5f6f68;
+}
+
+/* ===== TOP CARDS ===== */
+.lifestyle-card{
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  height:100%;
+  transition:.3s;
+  border:1px solid rgba(0,0,0,.05);
+}
+.lifestyle-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+.lifestyle-icon{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+/* warna sesuai desain */
+.bg-food{background:#e9f6f0;}
+.bg-skin{background:#f1ecfb;}
+.bg-routine{background:#fff2df;}
+.bg-self{background:#eaf7ea;}
+
+/* ===== WORKOUT BOX ===== */
+.workout-box{
+  background:#f7fbf8;
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,0,0,.05);
+}
+
+.workout-title{
+  font-weight:700;
+}
+
+/* ===== SIMPLE WORKOUT BOX ===== */
+.workout-wrapper{
+  background:#f7faf5;
+  border-radius:26px;
+  padding:36px;
+  border:1px solid #d9e4dd;
+}
+
+.workout-title{
+  font-size:28px;
+  font-weight:700;
+}
+
+/* ===== CARD ===== */
+.workout-card{
+  border-radius:18px;
+  padding:20px;
+  height:100%;
+  border:1px solid #8c9b92;
+}
+
+.workout-card h6{
+  font-weight:700;
+}
+
+.workout-card p{
+  font-size:14px;
+  color:#4f5f57;
+}
+
+.workout-card a{
+  display:inline-block;
+  margin-top:8px;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:16px;
+  border:1px solid #7fc7a2;
+  color:#2f6b52;
+  text-decoration:none;
+}
+
+.workout-card a:hover{
+  background:#7fc7a2;
+  color:#fff;
+}
+
+/* ===== WARNA CARD ===== */
+.bg-blue{background:#e6f3ff;}
+.bg-green{background:#eaf7ea;}
+.bg-pink{background:#fdeaea;}
+.bg-soft{background:#f6f8f5;}
+.bg-mint{background:#eaf6f0;}
+.bg-purple{background:#f1ecfb;}
+.bg-yellow{background:#fff1dc;}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <a href="Home.html">🏠 Home</a>
+      <a href="About.html">📖 About</a>
+      <a href="Mental.html">🧠 Mental Health</a>
+      <a href="habit.html">🔁 Habit</a>
+      <a href="Mindset12.html" >🌱 Mindset</a>
+      <a href="Produktivitas.html">⚡ Produktivitas</a>
+      <a href="Lifestyle.html" class="active">🌿 Lifestyle</a>
+      <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+      <a href="Artikel.html">💡 Insight</a>
+      <a href="Komunitas.html">👥 Komunitas</a>
+      <a href="Tools.html">🛠 Tools</a>
+      <a href="Contact.html">✉️ Contact</a>
+    </nav>
+
+    <div class="auth-btn text-center">
+      <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+      <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+    </div>
+  </div>
+</aside><div class="container py-5">
+
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <h2 class="page-title">🌱 Lifestyle</h2>
+    <p class="page-subtitle">
+      Pilih area gaya hidup sehat yang ingin kamu eksplorasi.<br>
+      Mulai dari hal kecil yang paling sesuai dengan <b>keseharianmu</b>.
+    </p>
+  </div>
+
+  <!-- TOP LIFESTYLE MENU -->
+  <div class="row g-4 mb-5">
+
+    <div class="col-md-3">
+        <div class="lifestyle-card bg-food"
+     onclick="window.location.href='LHealtyFood.html'">
+
+        <div class="lifestyle-icon">🥗</div>
+        <h6>Healthy Food</h6>
+        <small class="text-muted">Rekomendasi makanan sehat & praktis</small>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+  <a href="LSkinBodyCare.html" style="text-decoration:none; color:inherit;">
+    <div class="lifestyle-card bg-skin">
+      <div class="lifestyle-icon">🧴</div>
+      <h6>Skin & Body Care</h6>
+      <small class="text-muted">Perawatan kulit dan tubuh harian</small>
+    </div>
+  </a>
+</div>
+
+
+   <div class="col-md-3">
+  <div class="lifestyle-card bg-routine"
+       onclick="window.location.href='LDaily.html'">
+    <div class="lifestyle-icon">🌙</div>
+    <h6>Daily Routine</h6>
+    <small class="text-muted">Morning & night routine sehat</small>
+  </div>
+</div>
+
+
+ <div class="col-md-3">
+  <div class="lifestyle-card bg-self"
+       onclick="window.location.href='Lselfcare.html'">
+    <div class="lifestyle-icon">🌸</div>
+    <h6>Me Time</h6>
+    <small class="text-muted">Waktu istirahat untuk diri sendiri</small>
+  </div>
+</div>
+
+
+  </div>
+
+  <!-- SIMPLE WORKOUT -->
+  <div class="main-content">
+
+  <div class="workout-wrapper">
+
+    <div class="mb-4">
+      <h2 class="workout-title">Simple Workout 🏋️</h2>
+      <p class="text-muted">
+        Olahraga ringan yang bisa dilakukan di rumah tanpa alat.
+        Gerakan sederhana yang konsisten jauh lebih bermanfaat
+        untuk fisik dan mental.
+      </p>
+    </div>
+
+    <!-- ROW 1 -->
+    <div class="row g-4 mb-3">
+      <div class="col-md-3">
+        <div class="workout-card bg-blue">
+          <h6>Workout Otot Tangan</h6>
+          <p>Dapat membuat lengan lebih kencang tanpa alat.</p>
+          <a href="https://vt.tiktok.com/ZS5AS35Du/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-green">
+          <h6>Workout Kaki</h6>
+          <p>Fokus pada paha dan betis untuk kekuatan tubuh.</p>
+          <a href="https://vt.tiktok.com/ZS5AArsra/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-pink">
+          <h6>Workout Otot Perut</h6>
+          <p>Melatih core tubuh dan postur.</p>
+          <a href="https://vt.tiktok.com/ZS5AAN3T5/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-soft">
+          <h6>Full Body Workout</h6>
+          <p>melatih seluruh otot tubuh sekaligus, membakar kalori lebih efektif, meningkatkan stamina.</p>
+          <a href="https://vt.tiktok.com/ZS5AAwdV3/">Lihat Video Workout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="workout-card bg-mint">
+          <h6>Workout Sebelum Tidur</h6>
+          <p>Relaksasi dan meningkatkan kualitas tidur.</p>
+          <a href="https://vt.tiktok.com/ZS5AAU8r9/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-purple">
+          <h6>Cardio Ringan</h6>
+          <p>Meningkatkan stamina tanpa tekanan.</p>
+          <a href="https://vt.tiktok.com/ZS5AA5bhD/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-yellow">
+          <h6>Core & Balance</h6>
+          <p>Melatih keseimbangan dan stabilitas.</p>
+          <a href="https://vt.tiktok.com/ZS5AAhJLa/">Lihat Video Workout</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="workout-card bg-green">
+          <h6>Workout Postur Tubuh</h6>
+          <p>Memperbaiki postur akibat duduk lama.</p>
+          <a href="https://vt.tiktok.com/ZS5AAxqK5/">Lihat Video Workout</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div id="popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:20px; border-radius:20px; max-width:380px; width:90%; position:relative;">
+    
+    <span onclick="closePopup()" style="position:absolute; top:12px; right:16px; cursor:pointer; font-size:22px;">×</span>
+
+    <img id="popupImg" style="width:100%; height:200px; object-fit:cover; border-radius:14px; margin-bottom:12px;">
+    <h5 id="popupTitle"></h5>
+    <p id="popupText"></p>
+
+  </div>
+</div>
+<script>
+function openLifestyle(type){
+  const img=document.getElementById("popupImg");
+  const title=document.getElementById("popupTitle");
+  const text=document.getElementById("popupText");
+
+  if(type==="food"){
+    img.src="assets/img/food.jpg";
+    title.innerText="Healthy Food";
+    text.innerText="Pilihan makanan sehat yang gampang dan realistis.";
+  }
+
+  if(type==="skin"){
+    img.src="assets/img/skin.jpg";
+    title.innerText="Skin & Body Care";
+    text.innerText="Perawatan dasar seperti cuci muka & mandi teratur.";
+  }
+
+  if(type==="routine"){
+    img.src="assets/img/routine.jpg";
+    title.innerText="Daily Routine";
+    text.innerText="Rutinitas pagi & malam biar hidup lebih tertata.";
+  }
+
+  if(type==="self"){
+    img.src="assets/img/selfcare.jpg";
+    title.innerText="Self-Care";
+    text.innerText="Me time, istirahat, dan sayang sama diri sendiri.";
+  }
+
+  document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+function openLifestyle(menu){
+  if(menu === 'metime'){
+    window.location.href = 'Lselfcare.html';
+  }
+}
+
+
+</script>
+
+</body>
+</html>

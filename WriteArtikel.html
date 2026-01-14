@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Write Article | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      background:linear-gradient(180deg,#F6FBF8,#ECF7F0);
+      font-family:'Plus Jakarta Sans',sans-serif;
+      color:#2F4F3E;
+    }
+
+    .card-soft{
+      background:#fff;
+      border-radius:22px;
+      box-shadow:0 15px 35px rgba(0,0,0,.06);
+      animation:fadeUp .8s ease;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .btn-green{
+      background:#6FBF8E;
+      color:white;
+      border-radius:14px;
+      border:none;
+      padding:12px;
+      font-weight:600;
+    }
+
+    .btn-green:hover{background:#5CAB80}
+
+    textarea{resize:none}
+
+    .preview-img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:16px;
+      display:none;
+      margin-bottom:12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container py-5" style="max-width:720px">
+  <div class="card card-soft p-4">
+    <h4>✍️ Tulis Artikel</h4>
+    <p class="text-muted small mb-4">
+      Ceritamu bisa bantu orang lain merasa nggak sendirian 🌱
+    </p>
+
+    <input id="title" class="form-control mb-3" placeholder="Judul artikel">
+
+    <select id="category" class="form-select mb-3">
+      <option>Mental Health</option>
+      <option>Habit</option>
+      <option>Mindset</option>
+      <option>Produktivitas</option>
+    </select>
+
+    <input type="file" id="imageInput" class="form-control mb-3" accept="image/*">
+    <img id="preview" class="preview-img">
+
+    <textarea id="content" class="form-control mb-4" rows="8"
+      placeholder="Tulis isi artikel kamu di sini..."></textarea>
+
+    <button class="btn btn-green w-100" onclick="publish()">Publish 🌿</button>
+  </div>
+</div>
+
+<script>
+  const imgInput=document.getElementById("imageInput");
+  const preview=document.getElementById("preview");
+
+  imgInput.addEventListener("change",()=>{
+    const file=imgInput.files[0];
+    if(!file) return;
+    const reader=new FileReader();
+    reader.onload=()=>{
+      preview.src=reader.result;
+      preview.style.display="block";
+    }
+    reader.readAsDataURL(file);
+  });
+
+  function publish(){
+    const title=document.getElementById("title").value.trim();
+    const category=document.getElementById("category").value;
+    const content=document.getElementById("content").value.trim();
+    const image=preview.src||"";
+
+    if(!title||!content){
+      alert("Judul dan isi wajib diisi");
+      return;
+    }
+
+    const article={
+      title,category,content,image,
+      date:new Date().toLocaleDateString()
+    };
+
+    const data=JSON.parse(localStorage.getItem("growly_articles"))||[];
+    data.unshift(article);
+    localStorage.setItem("growly_articles",JSON.stringify(data));
+
+    window.location.href="Artikel.html";
+  }
+</script>
+
+</body>
+</html>

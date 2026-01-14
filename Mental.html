@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8faf9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+     /* ===== SIDEBAR ===== */
+    .sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 230px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-right: 1px solid #eef2ef;
+
+  overflow-y: auto;   /* ⬅️ INI KUNCINYA */
+}
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+    /* ===== AUTH BUTTON ===== */
+.auth-btn{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.auth-btn a{
+  text-align:center;
+  font-weight:700;
+  border-radius:14px;
+  padding:10px;
+  text-decoration:none;
+  transition:.2s;
+}
+
+/* Login */
+.btn-login{
+  background:#fbeeee;
+  color:#1f2d27;
+  border:1px solid #e4bcbc;
+}
+
+.btn-login:hover{
+  background:#f5dcdc;
+}
+
+/* Logout */
+.btn-logout{
+  background:#f1f4f3;
+  color:#1f2d27;
+  border:1px solid #cfdad6;
+}
+
+.btn-logout:hover{
+  background:#e6eeeb;
+}
+.sidebar-content{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.menu{
+  flex:1;
+}
+
+.auth-btn{
+  margin-top:20px;
+}
+
+.main-content{
+  margin-left: 230px; /* HARUS SAMA DENGAN WIDTH SIDEBAR */
+  padding: 32px;
+}
+
+
+    /* Badge */
+    .badge-soft {
+      background-color: #e6f4ef;
+      color: #2f7f63;
+      font-weight: 500;
+    }
+
+    /* Fade page */
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating image */
+    .float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Click animation */
+    .click-animate {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .click-animate:hover {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .click-animate:active {
+      transform: scale(0.96);
+    }
+
+    /* Tips Card */
+    .tips-card {
+      background: #e3f6ea;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .tips-card:hover {
+      background: #d6f0e2;
+    }
+
+    .tips-card h5 {
+      color: #2f7f63;
+      font-weight: 600;
+    }
+
+    .tips-card span {
+      color: #7aa897;
+      font-size: 14px;
+    }
+    /* PRESS EFFECT CARD */
+.press-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.press-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(47,127,99,0.15);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+/* MODAL AESTHETIC */
+.tips-modal{
+  background: linear-gradient(180deg, #f6fbf8, #ffffff);
+}
+
+.tips-item{
+  background:#e9f7ef;
+  border-radius:16px;
+  padding:16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:15px;
+  color:#1f2d27;
+  animation: popItem .4s ease both;
+}
+
+.tips-item span{
+  font-size:22px;
+}
+
+@keyframes popItem{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <nav class="menu">
+    <a href="Home.html">🏠 Home</a>
+    <a href="About.html">📖 About</a>
+    <a href="Mental.html"class="active">🧠 Mental Health</a>
+    <a href="habit.html">🔁 Habit</a>
+    <a href="Mindset12.html">🌱 Mindset</a>
+    <a href="Produktivitas.html">⚡ Produktivitas</a>
+    <a href="Lifestyle.html">🌿 Lifestyle</a>
+    <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+    <a href="Artikel.html">💡 Insight</a>
+    <a href="Komunitas.html">👥 Komunitas</a>
+    <a href="Tools.html">🛠 Tools</a>
+    <a href="Contact.html">✉️ Contact</a>
+  </nav>
+    </nav>
+
+    <div class="auth-btn text-center">
+  <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+  <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+</div>
+
+  </div>
+</aside>
+
+<main class="main-content fade-in">
+  <div class="container py-5">
+
+
+  <!-- HEADER -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <h2 class="fw-semibold">🧠 Mental Health</h2>
+      <p class="text-muted mt-3">
+        Mental health adalah kondisi kesejahteraan emosional dan psikologis yang
+        memengaruhi cara seseorang berpikir, merasa, dan bertindak dalam kehidupan
+        sehari-hari.
+      </p>
+      <p class="text-muted">
+        Menu ini bertujuan membantu Gen Z memahami isu kesehatan mental melalui
+        konten edukatif dari sumber tepercaya.
+      </p>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="foto/MentalHealth.png"
+           alt="Mental Health Illustration"
+           class="img-fluid float"
+           style="max-height:280px;">
+    </div>
+  </div>
+
+  <!-- TOPIK -->
+   
+  <div class="mb-5">
+    <h4 class="fw-semibold mb-4 text-success">Topik yang Dibahas</h4>
+
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 shadow-sm h-100 click-animate"
+             style="background: rgba(230,244,239,.6);">
+          <div class="d-flex align-items-center mb-2">
+            <div class="me-3 fs-4">🌿</div>
+            <h6 class="fw-semibold mb-0">Kelelahan Mental & Burnout</h6>
+          </div>
+          <p class="text-muted mb-0">
+            Kondisi kelelahan emosional akibat tekanan akademik, pekerjaan,
+            atau tuntutan sosial.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 shadow-sm h-100 click-animate"
+             style="background: rgba(230,244,239,.6);">
+          <div class="d-flex align-items-center mb-2">
+            <div class="me-3 fs-4">🧠</div>
+            <h6 class="fw-semibold mb-0">Overthinking & Kecemasan</h6>
+          </div>
+          <p class="text-muted mb-0">
+            Pola pikir berlebihan yang memicu rasa cemas dan sulit fokus.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 shadow-sm h-100 click-animate"
+             style="background: rgba(230,244,239,.6);">
+          <div class="d-flex align-items-center mb-2">
+            <div class="me-3 fs-4">💚</div>
+            <h6 class="fw-semibold mb-0">Keseimbangan Emosi</h6>
+          </div>
+          <p class="text-muted mb-0">
+            Kemampuan mengenali dan mengelola emosi agar tetap stabil.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 shadow-sm h-100 click-animate"
+             style="background: rgba(230,244,239,.6);">
+          <div class="d-flex align-items-center mb-2">
+            <div class="me-3 fs-4">✨</div>
+            <h6 class="fw-semibold mb-0">Perawatan Mental Sehari-hari</h6>
+          </div>
+          <p class="text-muted mb-0">
+            Upaya sederhana untuk menjaga kesehatan mental setiap hari.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- TIPS MENU -->
+  <div class="mt-5">
+    <div class="tips-card click-animate"
+     data-bs-toggle="modal"
+     data-bs-target="#mentalTipsModal">
+
+        Tips Untuk Menjaga<br>
+        Kesehatan Mental
+      </h5>
+      <span>Klik untuk detail</span>
+    </div>
+  </div>
+
+</div>
+<!-- MODAL TIPS MENTAL HEALTH -->
+<div class="modal fade" id="mentalTipsModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 border-0 shadow-lg tips-modal">
+
+      <div class="modal-body p-4 p-md-5">
+        <div class="text-center mb-4">
+          <div class="fs-1">🌿</div>
+          <h4 class="fw-semibold text-success mt-2">
+            Tips Menjaga Kesehatan Mental
+          </h4>
+          <p class="text-muted mb-0">
+            Langkah kecil yang berdampak besar 🌱
+          </p>
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>🧘‍♀️</span>
+              <p>Luangkan waktu untuk istirahat dan bernapas dengan sadar.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>📝</span>
+              <p>Tuliskan perasaanmu agar pikiran lebih lega.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>📵</span>
+              <p>Kurangi screen time dan notifikasi yang berlebihan.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>🤍</span>
+              <p>Jangan ragu berbagi cerita dengan orang tepercaya.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>🌙</span>
+              <p>Jaga pola tidur agar emosi lebih stabil.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="tips-item">
+              <span>☀️</span>
+              <p>Lakukan hal kecil yang kamu nikmati setiap hari.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+          <button class="btn btn-success px-4 rounded-pill"
+                  data-bs-dismiss="modal">
+            Aku Mengerti 💚
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

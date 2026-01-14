@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Insight | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      background:#F3F7F4;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      color:#2F4F3E;
+    }
+
+    .article-wrapper{
+      max-width:800px;
+      margin:80px auto;
+      background:#fff;
+      border-radius:24px;
+      padding:40px;
+      box-shadow:0 15px 35px rgba(0,0,0,.06);
+    }
+
+    .article-img{
+      height:260px;
+      border-radius:18px;
+      background-size:cover;
+      background-position:center;
+      margin-bottom:24px;
+    }
+
+    .category{
+      background:#E3F3EA;
+      padding:6px 14px;
+      border-radius:14px;
+      font-size:.75rem;
+      font-weight:600;
+      display:inline-block;
+      margin-bottom:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="article-wrapper">
+  <div id="articleImage" class="article-img"></div>
+  <span class="category" id="articleCategory"></span>
+  <h2 id="articleTitle" class="mt-2"></h2>
+  <small class="text-muted" id="articleDate"></small>
+  <p class="mt-4" id="articleContent"></p>
+</div>
+
+<script>
+  const article = JSON.parse(localStorage.getItem("currentArticle"));
+
+  if(article){
+    document.getElementById("articleImage").style.backgroundImage =
+      `url('${article.image}')`;
+    document.getElementById("articleTitle").innerText = article.title;
+    document.getElementById("articleCategory").innerText = article.category;
+    document.getElementById("articleDate").innerText = article.date;
+    document.getElementById("articleContent").innerText = article.content;
+  }
+</script>
+
+</body>
+</html>

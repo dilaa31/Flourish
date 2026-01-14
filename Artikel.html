@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Insight | Growly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+   body {
+      background-color: #f8faf9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .container{
+  margin-left:230px;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 230px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-right: 1px solid #eef2ef;
+      overflow-y: auto;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:800;
+      color:#7fc7a2;
+      margin-bottom:30px;
+    }
+
+    .menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#1f2d27;
+      padding:10px 14px;
+      border-radius:14px;
+      margin-bottom:6px;
+      font-weight:600;
+      transition:.2s;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      background:#dff3e6;
+    }
+
+    .sidebar-content{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .menu{
+      flex:1;
+    }
+
+    .auth-btn{
+      margin-top:20px;
+    }
+    .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border: 1.5px solid #2ecc71;
+  border-radius: 8px;
+
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #2ecc71;
+  color: white;
+}
+
+    /* ===== JUDUL INSIGHT ===== */
+    .hero{
+      text-align:center;
+      padding:70px 0 40px;
+    }
+
+    .hero h3{
+      font-weight:700;
+      font-size:2rem;
+      color:#1F3D2B;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:12px auto 0;
+      color:#4F6F5C;
+      font-size:.95rem;
+    }
+
+    /* ===== ARTIKEL ===== */
+    .article-card{
+      background:#fff;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+      transition:.3s;
+      height:100%;
+    }
+
+    .article-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(0,0,0,.1);
+    }
+
+    .article-img{
+      height:180px;
+      background-size:cover;
+      background-position:center;
+      background-color:#E8F5E9;
+    }
+    .insight-header {
+  text-align: center;
+  max-width: 700px;
+  margin-left: 510px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  
+}
+
+.insight-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.insight-header p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b5f55;
+}
+
+
+    .category{
+      background:#E3F3EA;
+      padding:6px 14px;
+      border-radius:14px;
+      font-size:.75rem;
+      display:inline-block;
+      margin-bottom:8px;
+      color:#2F6B4F;
+      font-weight:600;
+    }
+
+    /* ===== CARD NULIS INSIGHT ===== */
+    .write-section{
+      background:#CFEECF;
+      border-radius:26px;
+      padding:45px 30px;
+      text-align:center;
+      margin-top:60px;
+    }
+
+    .write-section h5{
+      font-weight:700;
+      color:#1F3D2B;
+      margin-bottom:8px;
+    }
+
+    .write-section p{
+      color:#355F4A;
+      font-size:.95rem;
+      margin-bottom:18px;
+    }
+
+    .btn-green{
+      background:#2F6B4F;
+      color:white;
+      border-radius:16px;
+      padding:12px 28px;
+      font-weight:600;
+      border:none;
+    }
+
+    .btn-green:hover{
+      background:#265842;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">Flourish</div>
+
+  <div class="sidebar-content">
+    <nav class="menu">
+      <a href="Home.html">🏠 Home</a>
+      <a href="About.html">📖 About</a>
+      <a href="Mental.html">🧠 Mental Health</a>
+      <a href="habit.html">🔁 Habit</a>
+      <a href="Mindset12.html" >🌱 Mindset</a>
+      <a href="Produktivitas.html">⚡ Produktivitas</a>
+      <a href="Lifestyle.html">🌿 Lifestyle</a>
+      <a href="Rekomendasi11.html">⭐ Rekomendasi</a>
+      <a href="Artikel.html" class="active">💡 Insight</a>
+      <a href="Komunitas.html">👥 Komunitas</a>
+      <a href="Tools.html">🛠 Tools</a>
+      <a href="Contact.html">✉️ Contact</a>
+    </nav>
+
+    <div class="auth-btn text-center">
+      <a href="login.html" class="btn btn-outline-success btn-sm mb-2 w-75">👤 Login</a>
+      <a href="logout.php" class="btn btn-outline-secondary btn-sm w-75">🚪 Logout</a>
+    </div>
+  </div>
+</aside>
+
+<!-- JUDUL INSIGHT -->
+<section class="insight-header">
+  <h1>💡 Insight</h1>
+  <p>Disini kamu bisa membaca, belajar bahkan menulis tanpa ada tuntutan. Insight di sini
+    berisi cerita tentang mental health, habit, mindset, dan produktivitas yang lebih
+    ramah ke diri sendiri.</p>
+</section>
+
+
+<!-- ARTIKEL -->
+<div class="container pb-5">
+
+  <p class="fw-semibold mb-5">
+    Pilihan insight yang mungkin lagi kamu butuhkan hari ini.
+  </p>
+
+  <div class="row g-4" id="articleList"></div>
+
+  <!-- WRITE CTA -->
+  <div class="write-section">
+    <h5>Punya cerita atau insight?</h5>
+    <p>Ceritamu bisa bantu orang lain merasa lebih baik</p>
+    <a href="WriteArtikel.html" class="btn btn-green">
+      Mulai menulis
+    </a>
+  </div>
+
+</div>
+
+<script>
+  function openArticle(article) {
+  localStorage.setItem("currentArticle", JSON.stringify(article));
+  window.location.href = "Article.html";
+}
+
+  const defaultArticles = [
+  
+  {
+    title: "Belajar Pelan-Pelan Itu Nggak Salah",
+    category: "Mental Health",
+    content: "Di dunia yang serba cepat, belajar pelan-pelan sering dianggap tertinggal. Padahal setiap orang punya ritme sendiri.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    date: "2024",
+    url: "https://www.healthline.com/health/mental-health/slow-down"
+  },
+  {
+    title: "Overthinking: Cara Berdamai Dengan Pikiran",
+    category: "Mental Health",
+    content: "Overthinking bukan musuh. Ia tanda kamu peduli. Yang penting adalah bagaimana mengelolanya.",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    date: "2024",
+    url: "https://www.healthline.com/health/how-to-stop-overthinking"
+  },
+  {
+    title: "Self-Care Bukan Egois",
+    category: "Mental Health",
+    content: "Merawat diri bukan berarti mengabaikan orang lain. Kamu juga butuh ruang untuk pulih.",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+    date: "2024",
+    url: "https://www.verywellmind.com/what-is-self-care-3144488"
+  },
+  {
+    title: "Habit Kecil yang Mengubah Hidup",
+    category: "Habit",
+    content: "Perubahan besar selalu dimulai dari kebiasaan kecil yang dilakukan secara konsisten.",
+    image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe",
+    date: "2024",
+    url: "https://jamesclear.com/atomic-habits"
+  },
+  {
+    title: "Morning Routine Versi Manusia Nyata",
+    category: "Habit",
+    content: "Rutinitas pagi tidak harus sempurna. Yang penting realistis dan bisa dijalani.",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+    date: "2024",
+    url: "https://zenhabits.net/simple-morning-routine/"
+  },
+  {
+    title: "Growth Mindset di Dunia Nyata",
+    category: "Mindset",
+    content: "Growth mindset bukan tentang selalu berhasil, tapi mau belajar dari kegagalan.",
+    image: "https://images.unsplash.com/photo-1500534314209-a26db0f5a3c9",
+    date: "2024",
+    url: "https://www.mindsetworks.com/what-is-growth-mindset/"
+  },
+  {
+    title: "Stop Membandingkan Diri dengan Orang Lain",
+    category: "Mindset",
+    content: "Perjalanan hidup setiap orang berbeda. Fokus pada perkembangan dirimu sendiri.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+    date: "2024",
+    url: "https://www.verywellmind.com/how-to-stop-comparing-yourself-to-others-5119849"
+  },
+  {
+    title: "Produktif Tanpa Burnout",
+    category: "Produktivitas",
+    content: "Produktif bukan berarti bekerja terus-menerus. Istirahat adalah bagian dari produktivitas.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    date: "2024",
+    url: "https://todoist.com/inspiration/productivity-without-burnout"
+  },
+  {
+    title: "Kenapa Kita Sering Kehilangan Fokus?",
+    category: "Produktivitas",
+    content: "Distraksi datang dari mana-mana. Fokus adalah keterampilan yang bisa dilatih.",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+    date: "2024",
+    url: "https://www.verywellmind.com/why-you-cant-focus-and-what-to-do-5186731"
+  },
+  {
+    title: "Belajar Memaafkan Diri Sendiri",
+    category: "Mental Health",
+    content: "Kesalahan bukan akhir cerita. Memaafkan diri adalah bagian dari proses bertumbuh.",
+    image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe",
+    date: "2024",
+    url: "https://greatergood.berkeley.edu/article/item/how_to_forgive_yourself"
+  }
+];
+
+
+
+  const userArticles = JSON.parse(localStorage.getItem("growly_articles")) || [];
+  const allArticles = [...userArticles, ...defaultArticles];
+  const articleList = document.getElementById("articleList");
+
+  allArticles.forEach(a => {
+    const col = document.createElement("div");
+    col.className = "col-md-6 col-lg-4";
+col.innerHTML = `
+  ${a.url ? `
+    <a href="${a.url}" target="_blank" class="text-decoration-none text-dark">
+  ` : `
+    <a href="#" onclick='openUserArticle(${JSON.stringify(a)})' class="text-decoration-none text-dark">
+  `}
+      <div class="article-card">
+        <div class="article-img" style="background-image:url('${a.image}')"></div>
+        <div class="p-4">
+          <span class="category">${a.category}</span>
+          <h5>${a.title}</h5>
+          <p class="text-muted small">${a.content.substring(0,100)}...</p>
+          <small class="text-muted">${a.date}</small>
+        </div>
+      </div>
+    </a>
+`;
+
+
+    articleList.appendChild(col);
+  });
+function openUserArticle(article){
+  localStorage.setItem("currentArticle", JSON.stringify(article));
+  window.location.href = "DetailArtikel.html";
+}
+</script>
+</body>
+</html>
